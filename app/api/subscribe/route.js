@@ -27,7 +27,7 @@ export async function POST(request) {
   if (!apiKey || !Number.isInteger(listId) || listId <= 0) {
     console.error('Newsletter not configured: set BREVO_API_KEY and BREVO_LIST_ID');
     return Response.json(
-      { error: 'Sign-ups are temporarily unavailable. Please email infoscholarnexus@gmail.com or message us on WhatsApp.' },
+      { error: 'Sign-ups are temporarily unavailable. Please email info@scholarnexushub.com or message us on WhatsApp.' },
       { status: 503 }
     );
   }

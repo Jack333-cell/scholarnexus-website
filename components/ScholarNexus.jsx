@@ -501,7 +501,7 @@ const ScholarNexus = () => {
               <button onClick={() => setCurrentPage('blog')} className="text-sm font-medium text-slate-600 hover:text-blue-600 transition">Blog</button>
               <a href="#services" onClick={() => setCurrentPage('home')} className="text-sm font-medium text-slate-600 hover:text-blue-600 transition">Services</a>
               <a href="#about" className="text-sm font-medium text-slate-600 hover:text-blue-600 transition">About</a>
-              <a href="mailto:infoscholarnexus@gmail.com" className="text-sm font-medium text-slate-600 hover:text-blue-600 transition">Contact</a>
+              <a href="mailto:info@scholarnexushub.com" className="text-sm font-medium text-slate-600 hover:text-blue-600 transition">Contact</a>
             </nav>
             <div className="flex items-center gap-4">
               <button className="hidden sm:block p-2 hover:bg-slate-100 rounded-lg transition">
@@ -518,7 +518,7 @@ const ScholarNexus = () => {
               <button onClick={() => setCurrentPage('blog')} className="block py-2 text-sm font-medium text-slate-600 hover:text-blue-600 w-full text-left">Blog</button>
               <a href="#services" onClick={() => { setCurrentPage('home'); setMobileMenuOpen(false); }} className="block py-2 text-sm font-medium text-slate-600 hover:text-blue-600">Services</a>
               <a href="#about" className="block py-2 text-sm font-medium text-slate-600 hover:text-blue-600">About</a>
-              <a href="mailto:infoscholarnexus@gmail.com" className="block py-2 text-sm font-medium text-slate-600 hover:text-blue-600">Contact</a>
+              <a href="mailto:info@scholarnexushub.com" className="block py-2 text-sm font-medium text-slate-600 hover:text-blue-600">Contact</a>
             </nav>
           )}
         </div>
@@ -683,7 +683,7 @@ const ScholarNexus = () => {
             <div>
               <h4 className="font-bold text-white mb-4">Contact</h4>
               <ul className="space-y-2 text-sm">
-                <li><a href="mailto:infoscholarnexus@gmail.com" className="hover:text-blue-400 transition break-all">infoscholarnexus@gmail.com</a></li>
+                <li><a href="mailto:info@scholarnexushub.com" className="hover:text-blue-400 transition break-all">info@scholarnexushub.com</a></li>
                 <li><a href="https://wa.me/254754835544" target="_blank" rel="noopener noreferrer" className="hover:text-blue-400 transition">WhatsApp: +254 754 835 544</a></li>
               </ul>
             </div>

@@ -1,7 +1,7 @@
 import { GraduationCap, FlaskConical, Laptop, Briefcase, School, Presentation, MessageCircle, Mail, ShieldCheck } from 'lucide-react';
 
 const WHATSAPP = '254754835544';
-const EMAIL = 'infoscholarnexus@gmail.com';
+const EMAIL = 'info@scholarnexushub.com';
 
 const waLink = (service) =>
   `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(`Hello ScholarNexus, I'm interested in: ${service}. Please share details.`)}`;

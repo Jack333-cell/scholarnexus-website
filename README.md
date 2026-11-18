@@ -29,5 +29,5 @@ Before each intake cycle, re-check every deadline and link on the official site 
 Deployed on [Vercel](https://vercel.com). Every push to `main` redeploys the site automatically.
 
 ## Contact
-- Email: infoscholarnexus@gmail.com
+- Email: info@scholarnexushub.com
 - WhatsApp: +254 754 835 544
