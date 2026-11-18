@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import Services from './Services';
 import { Search, Menu, X, ChevronRight, Calendar, Tag, Globe, Zap, TrendingUp, BookOpen, Award, ArrowLeft, MapPin, Clock, DollarSign, Users, CheckCircle, Mail, PlusCircle, Edit2, Trash2 } from 'lucide-react';
 
 const ScholarNexus = () => {
@@ -498,6 +499,7 @@ const ScholarNexus = () => {
             <nav className="hidden md:flex items-center gap-8">
               <button onClick={() => setCurrentPage('home')} className="text-sm font-medium text-slate-600 hover:text-blue-600 transition">Scholarships</button>
               <button onClick={() => setCurrentPage('blog')} className="text-sm font-medium text-slate-600 hover:text-blue-600 transition">Blog</button>
+              <a href="#services" onClick={() => setCurrentPage('home')} className="text-sm font-medium text-slate-600 hover:text-blue-600 transition">Services</a>
               <a href="#about" className="text-sm font-medium text-slate-600 hover:text-blue-600 transition">About</a>
               <a href="mailto:infoscholarnexus@gmail.com" className="text-sm font-medium text-slate-600 hover:text-blue-600 transition">Contact</a>
             </nav>
@@ -514,6 +516,7 @@ const ScholarNexus = () => {
             <nav className="md:hidden pb-4 border-t border-slate-200">
               <button onClick={() => setCurrentPage('home')} className="block py-2 text-sm font-medium text-slate-600 hover:text-blue-600 w-full text-left">Scholarships</button>
               <button onClick={() => setCurrentPage('blog')} className="block py-2 text-sm font-medium text-slate-600 hover:text-blue-600 w-full text-left">Blog</button>
+              <a href="#services" onClick={() => { setCurrentPage('home'); setMobileMenuOpen(false); }} className="block py-2 text-sm font-medium text-slate-600 hover:text-blue-600">Services</a>
               <a href="#about" className="block py-2 text-sm font-medium text-slate-600 hover:text-blue-600">About</a>
               <a href="mailto:infoscholarnexus@gmail.com" className="block py-2 text-sm font-medium text-slate-600 hover:text-blue-600">Contact</a>
             </nav>
@@ -525,7 +528,7 @@ const ScholarNexus = () => {
       <section className="bg-gradient-to-b from-blue-50 to-white py-12 md:py-20">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4 leading-tight">Find Your Next Fully Funded Scholarship</h2>
-          <p className="text-lg text-slate-600 mb-8 max-w-2xl mx-auto">Verified, open scholarships with official links — plus guidance on applications, CVs and theses. We share. We guide. You succeed. 💙</p>
+          <p className="text-lg text-slate-600 mb-8 max-w-2xl mx-auto">Verified, open scholarships with official links — plus guidance on theses, applications, CVs and online work. We share. We guide. You succeed. 💙</p>
           <div className="flex flex-col sm:flex-row gap-3 max-w-2xl mx-auto mb-12">
             <div className="flex-1 relative">
               <Search className="absolute left-3 top-3.5 w-5 h-5 text-slate-400" />
@@ -647,8 +650,10 @@ const ScholarNexus = () => {
         </div>
       </div>
 
+      <Services />
+
       {/* Footer */}
-      <footer id="about" className="bg-slate-900 text-slate-300 py-12 mt-16">
+      <footer id="about" className="bg-slate-900 text-slate-300 py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-4 gap-8 mb-8">
             <div>
@@ -656,7 +661,7 @@ const ScholarNexus = () => {
                 <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center"><Globe className="w-5 h-5 text-white" /></div>
                 <h3 className="font-bold text-white">ScholarNexus</h3>
               </div>
-              <p className="text-sm text-slate-400">ScholarNexus shares verified scholarship opportunities and offers guidance on applications, CVs and theses. We share. We guide. You succeed. 💙</p>
+              <p className="text-sm text-slate-400">ScholarNexus shares verified scholarship opportunities and offers guidance on theses, applications, CVs and online work. We share. We guide. You succeed. 💙</p>
             </div>
             <div>
               <h4 className="font-bold text-white mb-4">For Students</h4>
@@ -668,9 +673,11 @@ const ScholarNexus = () => {
             <div>
               <h4 className="font-bold text-white mb-4">Our Services</h4>
               <ul className="space-y-2 text-sm">
-                <li>Scholarship guidance</li>
-                <li>Thesis &amp; dissertation guidance</li>
-                <li>CV &amp; motivation letter writing</li>
+                <li><a href="#services" className="hover:text-blue-400 transition">Thesis &amp; research support</a></li>
+                <li><a href="#services" className="hover:text-blue-400 transition">Scholarships &amp; admissions</a></li>
+                <li><a href="#services" className="hover:text-blue-400 transition">Online work &amp; AI training jobs</a></li>
+                <li><a href="#services" className="hover:text-blue-400 transition">CVs &amp; job applications</a></li>
+                <li><a href="#services" className="hover:text-blue-400 transition">Teaching resources &amp; tutoring</a></li>
               </ul>
             </div>
             <div>
