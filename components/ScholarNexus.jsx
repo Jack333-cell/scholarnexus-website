@@ -163,6 +163,153 @@ const ScholarNexus = () => {
       benefits: ['Monthly scholarship payment', 'Health insurance contribution', 'Travel allowance', 'Study and research subsidy'],
       university: 'German universities (EPOS courses)',
       link: 'https://www.daad.de/epos'
+    },
+    {
+      id: 6,
+      title: 'Wageningen University Africa Scholarship Programme 2027 | Fully Funded (Netherlands)',
+      category: 'Masters',
+      levels: ['masters'],
+      country: 'Netherlands',
+      date: 'Updated November 2026',
+      author: 'ScholarNexus',
+      featured: true,
+      excerpt: 'Full MSc funding at Wageningen University & Research for top African students. Your complete MSc application must be in before 1 December 2026.',
+      thumbnail: '🌱',
+      amount: 'Fully Funded',
+      deadline: 'Complete MSc application before 1 Dec 2026',
+      duration: '24 months',
+      gpa: 'First Class Honours / 80%+',
+      description: 'Wageningen University & Research (WUR) offers the Africa Scholarship Programme to citizens of African countries starting an MSc in September 2027. There is no separate scholarship form: you are considered automatically if your complete MSc application is submitted before 1 December 2026. Recipients are chosen from selected candidates and offers are made in April 2027. Applicants from eligible developing countries may also be considered for the Anne van den Ban Fund through the same MSc application.',
+      requirements: ['Citizen of an African country', 'Unconditional admission to an on-campus WUR MSc (September 2027)', 'First Class Honours degree or GPA of 80%+', 'Complete MSc application submitted before 1 December 2026', 'Preference for applicants without a previous master’s degree'],
+      benefits: ['Tuition fees for 24 months', 'Living allowance', 'Travel to and from the Netherlands', 'Visa and health insurance costs'],
+      university: 'Wageningen University & Research',
+      link: 'https://www.wur.nl/en/education/master/study-expenses-masters/scholarships'
+    },
+    {
+      id: 7,
+      title: 'Mastercard Foundation Scholars Program at UC Berkeley 2027 | Fully Funded (USA)',
+      category: 'Masters',
+      levels: ['masters'],
+      country: 'United States',
+      date: 'Updated November 2026',
+      author: 'ScholarNexus',
+      featured: false,
+      excerpt: 'Full funding for African students admitted to a master’s programme at the University of California, Berkeley.',
+      thumbnail: '🇺🇸',
+      amount: 'Fully Funded',
+      deadline: 'Follows each Berkeley master’s programme deadline (most Dec 2026 – Jan 2027)',
+      duration: 'Up to 2 years',
+      gpa: 'Competitive for Berkeley admission',
+      description: 'The Mastercard Foundation Scholars Program at UC Berkeley supports young African leaders on master’s degrees. You first apply to a UC Berkeley graduate programme; candidates nominated by their programme are invited to a supplemental application and interview. The programme is for master’s students only (not undergraduates or PhD students). Applicants who entered their details and two recommenders in the Berkeley application by 15 November 2026 received an early invitation; check the official page for current steps.',
+      requirements: ['Citizen of an African country', 'Apply to an eligible UC Berkeley master’s programme', 'Strong academic record and leadership commitment', 'Commitment to return and contribute to Africa', 'Not a previous Mastercard Foundation Scholar'],
+      benefits: ['Full tuition and university fees', 'Housing and meals', 'Round-trip travel', 'Visa fees and health insurance', 'Leadership and entrepreneurship programming'],
+      university: 'University of California, Berkeley',
+      link: 'https://mcfscholarsprogram.berkeley.edu/'
+    },
+    {
+      id: 8,
+      title: 'York University President’s International Scholarship of Excellence 2027 (Canada)',
+      category: 'Undergraduate',
+      levels: ['undergraduate'],
+      country: 'Canada',
+      date: 'Updated November 2026',
+      author: 'ScholarNexus',
+      featured: false,
+      excerpt: 'CAD 45,000 a year (up to CAD 180,000) for outstanding international students entering York University from high school.',
+      thumbnail: '🇨🇦',
+      amount: 'CAD 45,000 per year (up to CAD 180,000)',
+      deadline: '27 Jan 2027 (11:59 PM EST)',
+      duration: 'Up to 4 years',
+      gpa: 'A average in high school',
+      description: 'York University’s top award for international students starting an undergraduate degree. First apply for admission to York; once you receive your York Reference Number (4–5 business days later), complete the separate scholarship application and arrange your school nomination. Renewal requires a minimum B average and at least 24 credits a year.',
+      requirements: ['Apply for undergraduate admission to York University', 'A average (or equivalent) in high school', 'Demonstrated leadership and community involvement', 'Separate scholarship application with school nomination'],
+      benefits: ['CAD 45,000 per year', 'Renewable for up to 4 years (max CAD 180,000)'],
+      university: 'York University, Toronto',
+      link: 'https://futurestudents.yorku.ca/pise'
+    },
+    {
+      id: 9,
+      title: 'Miami University Presidential Fellows Program 2027 (USA)',
+      category: 'Undergraduate',
+      levels: ['undergraduate'],
+      country: 'United States',
+      date: 'Updated November 2026',
+      author: 'ScholarNexus',
+      featured: false,
+      excerpt: 'Miami University’s top undergraduate award: tuition, fees, housing and food for 15 students a year. Deadline 1 December 2026.',
+      thumbnail: '🏛️',
+      amount: 'Tuition, fees, housing & food + $5,000',
+      deadline: '1 Dec 2026',
+      duration: '4 years',
+      gpa: 'Top Honors College applicants',
+      description: 'The Presidential Fellows Program at Miami University (Ohio) is a highly competitive award for fifteen first-year students in the Honors College each year. Indicate your interest on the admission application by 1 December. From fall 2027, applicants must also submit self-reported ACT or SAT scores. Shortlisted candidates go through additional review and an interview.',
+      requirements: ['Apply for first-year admission to Miami University (Oxford campus) by 1 December', 'Indicate interest in the Presidential Fellows Program', 'Self-reported ACT or SAT scores (required from fall 2027)', 'Interview if shortlisted'],
+      benefits: ['Tuition and fees', 'Housing and food', '$5,000 academic enrichment stipend', 'Honors College cohort programming'],
+      university: 'Miami University, Ohio',
+      link: 'https://miamioh.edu/admission-aid/costs-financial-aid/scholarships.html'
+    },
+    {
+      id: 10,
+      title: 'UNIQLO Global Management Program 2027 | Fully Funded (Japan)',
+      category: 'Internships & Training',
+      levels: ['programs', 'undergraduate'],
+      country: 'Japan',
+      date: 'Updated November 2026',
+      author: 'ScholarNexus',
+      featured: false,
+      excerpt: 'A 6-day, fully paid leadership programme at Fast Retailing’s global headquarters in Tokyo for undergraduates worldwide.',
+      thumbnail: '🇯🇵',
+      amount: 'Fully Funded',
+      deadline: 'About 28 Feb 2027, so confirm on the official site',
+      duration: '6 days (25–30 July 2027)',
+      gpa: 'Strong academics & English',
+      description: 'Fast Retailing (the company behind UNIQLO) brings high-achieving students from around the world to its Tokyo headquarters to learn about global retail through store visits, research and a presentation to senior management. Selection includes an online application, assessments and interviews.',
+      requirements: ['Currently enrolled undergraduate (penultimate-year students are a good fit)', 'Excellent English', 'Leadership and teamwork experience', 'Able to attend the full programme in Tokyo'],
+      benefits: ['Round-trip airfare to Japan', 'Accommodation', 'Mentoring from global business leaders', 'Possible consideration for future roles at Fast Retailing'],
+      university: 'Fast Retailing Global HQ, Tokyo',
+      link: 'https://www.fastretailing.com/employment/en/uniqlo/graduate/gmp/'
+    },
+    {
+      id: 11,
+      title: 'French-African Foundation Young Leaders Program 2027',
+      category: 'Leadership Program',
+      levels: ['programs'],
+      country: 'France & Africa',
+      date: 'Updated November 2026',
+      author: 'ScholarNexus',
+      featured: false,
+      excerpt: 'A leadership and networking programme for young African and French professionals, with seminars in France and Africa.',
+      thumbnail: '🤝',
+      amount: 'Travel & accommodation covered',
+      deadline: '2027 call is open, so check the official site for the closing date',
+      duration: 'Two week-long seminars',
+      gpa: 'Proven leadership & impact',
+      description: 'The Young Leaders Program is the French-African Foundation’s flagship initiative, connecting emerging African and French leaders with decision-makers through training, mentoring and two seminars held alternately in France and on the African continent. In past editions applicants needed to be aged 28–40, hold African or French nationality, have at least five years of professional experience and speak English; confirm the 2027 criteria on the official site.',
+      requirements: ['African or French nationality', 'Typically aged 28–40 (check 2027 criteria)', 'At least 5 years of professional experience with leadership impact', 'English required; French is an asset', 'CV, passport copy and short video presentation'],
+      benefits: ['Flights and accommodation for the seminars', 'Training led by experts', 'Meetings with public and private decision-makers', 'Lifelong Young Leaders alumni network'],
+      university: 'French-African Foundation',
+      link: 'https://www.french-african.org/'
+    },
+    {
+      id: 12,
+      title: 'Google AI Plus Free for 12 Months: University Students in Africa',
+      category: 'Student Offer',
+      levels: ['offers'],
+      country: '27 African countries',
+      date: 'Updated November 2026',
+      author: 'ScholarNexus',
+      featured: false,
+      excerpt: 'Eligible college and university students in 27 African countries can get one year of Google AI Plus (Gemini) free.',
+      thumbnail: '🤖',
+      amount: 'Free for 12 months',
+      deadline: 'Limited-time offer, so sign up soon',
+      duration: '12 months',
+      gpa: 'Verified student status',
+      description: 'Google is offering eligible college and university students across 27 African countries one year of Google AI Plus at no cost, including Gemini study tools. Note: this year’s offer is AI Plus, not AI Pro. Verify your student status on Google’s sign-up page; availability depends on your country and institution.',
+      requirements: ['Enrolled at an eligible college or university', 'Located in an eligible African country', 'Personal Google account', 'Student verification on the sign-up page'],
+      benefits: ['Google AI Plus free for 12 months', 'Gemini study and research tools', 'Extra cloud storage'],
+      university: 'Google',
+      link: 'https://one.google.com/ai-student'
     }
   ];
 
@@ -170,7 +317,9 @@ const ScholarNexus = () => {
     { id: 'all', label: 'All Scholarships' },
     { id: 'undergraduate', label: 'Undergraduate' },
     { id: 'masters', label: 'Masters' },
-    { id: 'phd', label: 'PhD' }
+    { id: 'phd', label: 'PhD' },
+    { id: 'programs', label: 'Leadership & Internships' },
+    { id: 'offers', label: 'Student Offers' }
   ];
 
   const filteredScholarships = scholarshipListings.filter((s) => {
@@ -537,7 +686,7 @@ const ScholarNexus = () => {
             <button className="px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition">Search</button>
           </div>
           <div className="grid md:grid-cols-3 gap-6">
-            <div className="bg-white rounded-lg p-6 border border-slate-200"><div className="text-3xl font-bold text-blue-600 mb-1">{scholarshipListings.length}</div><p className="text-sm text-slate-600">Verified Open Scholarships</p></div>
+            <div className="bg-white rounded-lg p-6 border border-slate-200"><div className="text-3xl font-bold text-blue-600 mb-1">{scholarshipListings.length}</div><p className="text-sm text-slate-600">Verified Opportunities</p></div>
             <div className="bg-white rounded-lg p-6 border border-slate-200"><div className="text-3xl font-bold text-blue-600 mb-1">100%</div><p className="text-sm text-slate-600">Official Application Links</p></div>
             <div className="bg-white rounded-lg p-6 border border-slate-200"><div className="text-3xl font-bold text-blue-600 mb-1">Free</div><p className="text-sm text-slate-600">Scholarship Guidance</p></div>
           </div>
