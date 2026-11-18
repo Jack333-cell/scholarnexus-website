@@ -11,7 +11,7 @@ const ScholarNexus = () => {
   const [currentPage, setCurrentPage] = useState('home'); // home, scholarships, blog, blog-post
   const [selectedBlogPost, setSelectedBlogPost] = useState(null);
   const [showNewBlogForm, setShowNewBlogForm] = useState(false);
-  const [showNewsletterSuccess, setShowNewsletterSuccess] = useState(false);
+  const [newsletter, setNewsletter] = useState({ status: 'idle', message: '' });
   const [email, setEmail] = useState('');
   const [blogs, setBlogs] = useState([
     {
@@ -200,17 +200,38 @@ const ScholarNexus = () => {
     setBlogs(blogs.filter(blog => blog.id !== id));
   };
 
-  const handleNewsletterSubmit = (e) => {
+  const handleNewsletterSubmit = async (e) => {
     e.preventDefault();
-    if (email) {
-      const subject = encodeURIComponent('Subscribe me to ScholarNexus updates');
-      const body = encodeURIComponent(`Please add ${email} to the ScholarNexus scholarship updates list.`);
-      window.location.href = `mailto:infoscholarnexus@gmail.com?subject=${subject}&body=${body}`;
-      setShowNewsletterSuccess(true);
-      setEmail('');
-      setTimeout(() => setShowNewsletterSuccess(false), 3000);
+    const address = email.trim();
+    if (!address || newsletter.status === 'loading') return;
+    setNewsletter({ status: 'loading', message: 'Subscribing…' });
+    try {
+      const res = await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: address, website: e.target.website?.value || '' }),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (res.ok) {
+        setNewsletter({ status: 'ok', message: data.message || "You're subscribed! Watch your inbox for new scholarships." });
+        setEmail('');
+      } else {
+        setNewsletter({ status: 'error', message: data.error || 'Something went wrong. Please try again, or message us on WhatsApp.' });
+      }
+    } catch {
+      setNewsletter({ status: 'error', message: 'Network error. Please check your connection and try again.' });
     }
   };
+
+  const NewsletterMessage = ({ dark }) =>
+    newsletter.status === 'idle' ? null : (
+      <div role="status" className={`mt-3 flex items-start gap-2 text-sm rounded p-2 ${dark ? 'bg-blue-500 text-white' : newsletter.status === 'error' ? 'bg-red-50 text-red-700' : 'bg-white text-slate-700'}`}>
+        {newsletter.status === 'ok' && <CheckCircle className="w-4 h-4 mt-0.5 flex-shrink-0" />}
+        <span>{newsletter.message}</span>
+      </div>
+    );
+
+  const honeypot = <input type="text" name="website" tabIndex={-1} autoComplete="off" aria-hidden="true" className="hidden" />;
 
   // BLOG DETAIL PAGE
   if (currentPage === 'blog-post' && selectedBlogPost) {
@@ -254,9 +275,11 @@ const ScholarNexus = () => {
                 <h3 className="text-lg font-bold text-slate-900 mb-2">Stay Updated</h3>
                 <p className="text-slate-600 mb-4">Subscribe to our newsletter for more scholarship tips and guides.</p>
                 <form onSubmit={handleNewsletterSubmit} className="flex gap-2">
+                  {honeypot}
                   <input type="email" placeholder="Your email" value={email} onChange={(e) => setEmail(e.target.value)} className="flex-1 px-4 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600" required />
-                  <button type="submit" className="px-6 py-2 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition">Subscribe</button>
+                  <button type="submit" disabled={newsletter.status === 'loading'} className="px-6 py-2 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition disabled:opacity-60">Subscribe</button>
                 </form>
+                <NewsletterMessage />
               </div>
             </div>
           </article>
@@ -534,14 +557,11 @@ const ScholarNexus = () => {
               <h4 className="font-bold text-sm mb-2">Get New Scholarships</h4>
               <p className="text-xs text-blue-100 mb-4">Get new opportunities by email, or <a href="https://wa.me/254754835544" target="_blank" rel="noopener noreferrer" className="underline font-semibold">chat with us on WhatsApp</a>.</p>
               <form onSubmit={handleNewsletterSubmit}>
+                {honeypot}
                 <input type="email" placeholder="Your email" value={email} onChange={(e) => setEmail(e.target.value)} className="w-full px-3 py-2 rounded-lg bg-blue-500 placeholder-blue-300 text-white text-sm focus:outline-none focus:ring-2 focus:ring-white mb-3" required />
-                <button type="submit" className="w-full px-3 py-2 bg-white text-blue-600 font-medium text-sm rounded-lg hover:bg-blue-50 transition">Subscribe</button>
+                <button type="submit" disabled={newsletter.status === 'loading'} className="w-full px-3 py-2 bg-white text-blue-600 font-medium text-sm rounded-lg hover:bg-blue-50 transition disabled:opacity-60">Subscribe</button>
               </form>
-              {showNewsletterSuccess && (
-                <div className="mt-3 flex items-center gap-2 text-sm bg-blue-500 rounded p-2">
-                  <CheckCircle className="w-4 h-4" /> Opening your email app…
-                </div>
-              )}
+              <NewsletterMessage dark />
             </div>
           </aside>
 
