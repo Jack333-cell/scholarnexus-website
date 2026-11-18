@@ -637,9 +637,7 @@ const ScholarNexus = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-blue-700 rounded-lg flex items-center justify-center">
-                <Globe className="w-6 h-6 text-white" />
-              </div>
+              <img src="/logo-mark.png" alt="ScholarNexus logo" width="52" height="52" className="w-13 h-13 rounded-lg bg-white" style={{width:52,height:52}} />
               <div>
                 <h1 className="text-xl font-bold text-slate-900">ScholarNexus</h1>
                 <p className="text-xs text-slate-500">Connect · Empower · Succeed</p>
@@ -807,7 +805,7 @@ const ScholarNexus = () => {
           <div className="grid md:grid-cols-4 gap-8 mb-8">
             <div>
               <div className="flex items-center gap-2 mb-4">
-                <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center"><Globe className="w-5 h-5 text-white" /></div>
+                <img src="/logo-mark.png" alt="ScholarNexus logo" width="36" height="36" className="w-9 h-9 rounded-md bg-white p-0.5" />
                 <h3 className="font-bold text-white">ScholarNexus</h3>
               </div>
               <p className="text-sm text-slate-400">ScholarNexus shares verified scholarship opportunities and offers guidance on theses, applications, CVs and online work. We share. We guide. You succeed. 💙</p>

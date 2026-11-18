@@ -1,6 +1,7 @@
 import './globals.css';
 
 export const metadata = {
+  metadataBase: new URL('https://www.scholarnexushub.com'),
   title: 'ScholarNexus — Verified Scholarships & Academic Guidance',
   description: 'Verified, open scholarship opportunities with official links, plus guidance on applications, CVs and theses. Connect · Empower · Succeed.',
 };
