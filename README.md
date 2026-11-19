@@ -22,7 +22,11 @@ npm run build    # production build
 ```
 
 ## Updating scholarships
-Listings live in `components/ScholarNexus.jsx` (`scholarshipListings`).
+Listings live in `lib/data.js`. Each entry gets its own page at `/scholarships/<slug>`; keep `slug` unchanged once published.
+Set `closeDate` (YYYY-MM-DD, earliest deadline, or `null` if rolling) and, if there are several deadlines, `lastDate`.
+Collection pages (closing soon, fully funded, for African students, by level, by country) are defined in `lib/collections.js`
+and are rebuilt hourly, so "days left" badges and closed listings update automatically. `sitemap.xml` and `robots.txt`
+are generated from the same data.
 Before each intake cycle, re-check every deadline and link on the official site and update the `date` field.
 
 ## Deployment
