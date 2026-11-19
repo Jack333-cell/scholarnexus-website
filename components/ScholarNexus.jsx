@@ -415,6 +415,48 @@ const ScholarNexus = () => {
       benefits: ['Free AI and prompt-engineering training', 'Prompt Literacy certificate', 'Self-paced, in English or Arabic'],
       university: 'Dubai Centre for Artificial Intelligence',
       link: 'https://dub.ai/omp'
+    },
+    {
+      id: 18,
+      title: 'Yale Young Global Scholars (YYGS) 2027 | Need-Based Aid up to 100% (USA)',
+      category: 'High School Program',
+      levels: ['programs'],
+      country: 'United States',
+      date: 'Updated November 2026',
+      author: 'ScholarNexus',
+      featured: false,
+      excerpt: 'Two-week summer academic programme at Yale for high-school students aged 16–18 from every country, with need-based aid covering up to 100% of tuition.',
+      thumbnail: '🏫',
+      amount: 'Need-based aid up to 100% of tuition',
+      deadline: '6 Jan 2027, 11:59 PM ET (Regular Decision)',
+      duration: '2 weeks (June–July 2027)',
+      gpa: 'High-achieving high-school students',
+      description: 'Yale Young Global Scholars is a residential summer programme on Yale’s campus with lectures, small seminars and a capstone project across academic tracks such as Solving Global Challenges, Innovations in Science & Technology, and Politics, Law & Economics. Students from all countries may apply and request need-based financial aid inside the same application; aid packages can cover up to the full tuition. The application fee can be waived for families facing financial hardship.',
+      requirements: ['Aged 16–18 by 18 July 2027', 'Current high-school (secondary) student', 'Online YYGS application with essays and a school recommendation', 'Complete the financial-aid section by 6 Jan 2027 to be considered for aid', '$100 application fee (waivers available)'],
+      benefits: ['Need-based aid up to 100% of tuition', 'Two weeks on Yale’s campus with Yale faculty', 'Global peer network from 150+ countries'],
+      university: 'Yale University',
+      link: 'https://globalscholars.yale.edu/how-apply/application-deadlines'
+    },
+    {
+      id: 19,
+      title: 'Zoom AI Launchpad 2027: Up to $150,000 in AI Credits for Startups',
+      category: 'Startup Grant',
+      levels: ['programs'],
+      country: 'Global (online)',
+      date: 'Updated November 2026',
+      author: 'ScholarNexus',
+      featured: false,
+      excerpt: 'Equity-free grant of up to $150,000 in Zoom AI Services credits for AI startups building with speech, translation and voice AI.',
+      thumbnail: '🚀',
+      amount: 'Up to $150,000 in API credits (equity-free)',
+      deadline: 'Rolling, apply anytime',
+      duration: 'Credits valid up to 12 months',
+      gpa: 'Early- to growth-stage AI startup',
+      description: 'Zoom’s AI Launchpad, launched in November 2026, gives eligible startups up to $150,000 in Zoom AI Services credits to build AI-native products with Zoom’s speech recognition, summarisation, translation, voice AI and decision-intelligence APIs, without giving up equity. It has three tiers based on stage and needs, with technical support for selected startups. Note: the award is platform credits, not cash funding.',
+      requirements: ['Early- to growth-stage startup building an AI product', 'A use case for speech, translation, voice or AI agents', 'Online application (reviewed on a rolling basis)'],
+      benefits: ['Up to $150,000 in Zoom AI Services credits', 'No equity taken', 'Engineering guidance and priority API access for eligible startups'],
+      university: 'Zoom Communications',
+      link: 'https://zoom.ai/ai-launchpad'
     }
   ];
 
