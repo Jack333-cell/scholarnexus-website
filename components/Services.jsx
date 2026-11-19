@@ -1,4 +1,4 @@
-import { GraduationCap, FlaskConical, Laptop, Briefcase, School, Presentation, MessageCircle, Mail, ShieldCheck } from 'lucide-react';
+import { GraduationCap, FlaskConical, Laptop, Briefcase, School, Presentation, MessageCircle, Mail, ShieldCheck, BookOpen, PenLine, Users, Award, Wallet, Clock, Lock } from 'lucide-react';
 
 const WHATSAPP = '254754835544';
 const EMAIL = 'info@scholarnexushub.com';
@@ -19,11 +19,42 @@ const services = [
     items: [
       'Thesis & dissertation formatting (APA, Harvard, Vancouver, university templates)',
       'Proofreading & language editing',
-      'Research proposal & literature review guidance',
+      'Topic selection & research proposal guidance',
+      'Research design & methodology guidance',
+      'Literature review guidance',
       'Referencing and Mendeley/Zotero setup',
       'Data analysis guidance (SPSS, R, Python, Excel)',
-      'Journal formatting, cover letters & submission support',
       'Similarity (plagiarism) report review & proper citation guidance',
+    ],
+  },
+  {
+    id: 'publication',
+    title: 'Research & Publication Support',
+    icon: BookOpen,
+    accent: { band: 'bg-teal-600', icon: 'text-teal-700 bg-teal-50', dot: 'bg-teal-600' },
+    blurb: 'Take your research from manuscript to published paper.',
+    items: [
+      'Journal selection guidance (scope, indexing, avoiding predatory journals)',
+      'Manuscript formatting to journal guidelines',
+      'Cover letters & submission process support',
+      'Responding to reviewer comments',
+      'Research mentorship',
+      'Citation & bibliography support',
+    ],
+  },
+  {
+    id: 'writing',
+    title: 'Academic Writing Support',
+    icon: PenLine,
+    accent: { band: 'bg-orange-500', icon: 'text-orange-600 bg-orange-50', dot: 'bg-orange-500' },
+    blurb: 'Improve your own writing: we edit, review and coach.',
+    items: [
+      'Essay & assignment editing and feedback',
+      'Literature review structuring & feedback',
+      'Case study structure & feedback',
+      'Plagiarism-report review & proper paraphrasing/citation coaching',
+      'Referencing styles: APA, MLA, Harvard, Chicago, Vancouver',
+      'Referencing tools: Mendeley, Zotero, EndNote',
     ],
   },
   {
@@ -33,13 +64,15 @@ const services = [
     accent: { band: 'bg-amber-500', icon: 'text-amber-600 bg-amber-50', dot: 'bg-amber-500' },
     blurb: 'Find the right opportunity and submit a stronger application.',
     items: [
+      'Global scholarship alerts (email & X)',
       'Scholarship search & matching to your profile',
+      'University & programme selection',
       'Motivation letter / SOP review and editing',
       'Academic CV & Europass CV',
       'Application review before you submit',
       'Recommendation letter guidance for referees',
       'University application & document checklists',
-      'Visa document preparation checklists',
+      'Visa & documentation guidance',
     ],
   },
   {
@@ -82,9 +115,10 @@ const services = [
     items: [
       'CBC lesson plans & schemes of work',
       'Teaching notes and revision materials',
-      'Biology & Chemistry tutoring',
+      'Online tutoring & consultation (Biology, Chemistry, research skills)',
       'Exam & assessment preparation',
       'Teaching practice portfolio guidance',
+      'Academic skills development (study, writing & time management)',
     ],
   },
   {
@@ -95,6 +129,7 @@ const services = [
     blurb: 'Professional-looking documents and slides.',
     items: [
       'PowerPoint for seminars, defences & conferences',
+      'Report formatting & presentation coaching',
       'Scientific posters, leaflets & flyers',
       'Word & Excel formatting, tables and charts',
       'Typing, transcription & PDF conversion',
@@ -149,6 +184,24 @@ export default function Services() {
               </article>
             );
           })}
+        </div>
+
+        <div className="mt-12 rounded-xl bg-blue-600 text-white p-6 md:p-8">
+          <h3 className="text-xl md:text-2xl font-bold mb-6 text-center">Why choose <span className="text-amber-500">ScholarNexus</span>?</h3>
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-6 text-center">
+            {[
+              { icon: Users, label: 'Qualified, experienced team' },
+              { icon: Award, label: 'High-quality, careful work' },
+              { icon: Wallet, label: 'Affordable & student friendly' },
+              { icon: Clock, label: 'Timely delivery & reliable support' },
+              { icon: Lock, label: 'Your documents kept confidential' },
+            ].map(({ icon: I, label }) => (
+              <div key={label} className="flex flex-col items-center gap-2">
+                <I className="w-8 h-8 text-amber-500" />
+                <span className="text-sm font-medium">{label}</span>
+              </div>
+            ))}
+          </div>
         </div>
 
         <div className="mt-10 flex items-start gap-3 max-w-3xl mx-auto bg-white border border-slate-200 rounded-xl p-5">
