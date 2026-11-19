@@ -457,6 +457,48 @@ const ScholarNexus = () => {
       benefits: ['Up to $150,000 in Zoom AI Services credits', 'No equity taken', 'Engineering guidance and priority API access for eligible startups'],
       university: 'Zoom Communications',
       link: 'https://zoom.ai/ai-launchpad'
+    },
+    {
+      id: 20,
+      title: 'Felix Scholarships at SOAS University of London 2027/28 | Fully Funded (UK)',
+      category: 'Masters & PhD',
+      levels: ['masters', 'phd'],
+      country: 'United Kingdom',
+      date: 'Updated November 2026',
+      author: 'ScholarNexus',
+      featured: false,
+      excerpt: 'Full funding (tuition, living costs and airfare) for a master’s or PhD at SOAS. Mainly for Indian nationals, plus one award for a national of another developing country.',
+      thumbnail: '🇬🇧',
+      amount: 'Fully Funded',
+      deadline: '26 Feb 2027, 11:59 AM UK time (check the Non-Indian award page for its date)',
+      duration: 'Length of the programme',
+      gpa: 'First-class degree (Indian award)',
+      description: 'The Felix Scholarship Trust funds postgraduate study at SOAS University of London. Felix Scholarships are for Indian nationals with first-class degrees; in addition, one Felix (Non-Indian) Scholarship is offered to a national of a developing country (for example Kenya, Nigeria, Ghana or Pakistan) for entry in September 2027. You must apply for admission first and then complete a separate Felix application. Shortlisted candidates are interviewed online by the Felix Trust in April–May 2027.',
+      requirements: ['Apply for a full-time taught master’s or PhD at SOAS', 'Indian national with a first-class degree, OR national of a developing country (Non-Indian award, one place)', 'Demonstrate financial need and commit to returning home after study', 'Separate Felix scholarship application by the deadline'],
+      benefits: ['Full tuition fees', 'Living costs', 'Return airfare'],
+      university: 'SOAS University of London',
+      link: 'https://www.soas.ac.uk/study/student-life/finance/scholarships/felix-scholarships'
+    },
+    {
+      id: 21,
+      title: 'Mastercard Foundation Scholars at EARTH University 2027 | Fully Funded (Costa Rica)',
+      category: 'Undergraduate',
+      levels: ['undergraduate'],
+      country: 'Costa Rica',
+      date: 'Updated November 2026',
+      author: 'ScholarNexus',
+      featured: false,
+      excerpt: 'Fully funded four-year undergraduate degree in agricultural sciences and natural resources at EARTH University for young people from disadvantaged communities in Africa and Latin America.',
+      thumbnail: '🌿',
+      amount: 'Fully Funded',
+      deadline: '31 Jan 2027',
+      duration: '4 years',
+      gpa: 'Strong secondary-school results',
+      description: 'EARTH University in Costa Rica partners with the Mastercard Foundation to fund talented young leaders from economically disadvantaged backgrounds in sub-Saharan Africa and Latin America. The degree focuses on agricultural sciences and natural resources, with hands-on learning and entrepreneurship. There is no separate scholarship form: scholars are selected from qualified applicants to EARTH University, so the first step is to apply for admission.',
+      requirements: ['Graduating or recent secondary-school student from an eligible country', 'Demonstrated financial need', 'Leadership potential and commitment to giving back', 'Apply for admission to EARTH University by 31 Jan 2027'],
+      benefits: ['Tuition and fees', 'Accommodation and meals', 'Travel costs', 'Laptop and learning materials', 'Leadership and career support'],
+      university: 'EARTH University',
+      link: 'https://admissions.earth.ac.cr/'
     }
   ];
 
