@@ -494,6 +494,7 @@ const ScholarNexus = () => {
                         <div className="flex flex-wrap items-center gap-3 text-xs text-slate-500">
                           <span className="flex items-center gap-1"><Tag className="w-3 h-3" />{scholarship.category}</span>
                           <span className="flex items-center gap-1"><Globe className="w-3 h-3" />{scholarship.country}</span>
+                          <span className="flex items-center gap-1 font-semibold text-green-700"><DollarSign className="w-3 h-3" />{scholarship.amount}</span>
                           <span className="flex items-center gap-1"><Calendar className="w-3 h-3" />{scholarship.date}</span>
                         </div>
                       </div>
@@ -516,7 +517,8 @@ const ScholarNexus = () => {
                         <p className="text-sm text-slate-600 mb-3 line-clamp-1">{scholarship.excerpt}</p>
                         <div className="flex flex-wrap items-center gap-3 text-xs text-slate-500">
                           <span className="flex items-center gap-1"><Tag className="w-3 h-3" />{scholarship.category}</span>
-                          <span className="flex items-center gap-1"><Calendar className="w-3 h-3" />{scholarship.date}</span>
+                          <span className="flex items-center gap-1 font-semibold text-green-700"><DollarSign className="w-3 h-3" />{scholarship.amount}</span>
+                          <span className="flex items-center gap-1"><Calendar className="w-3 h-3" />{scholarship.deadline}</span>
                         </div>
                       </div>
                       <ChevronRight className="w-5 h-5 text-slate-400 group-hover:text-blue-600 transition flex-shrink-0 mt-1" />
