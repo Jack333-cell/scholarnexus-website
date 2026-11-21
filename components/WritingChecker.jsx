@@ -24,14 +24,14 @@ export default function WritingChecker() {
   return (
     <div className="grid lg:grid-cols-2 gap-8">
       <div>
-        <a href="/tools/cv-polisher" className="block mb-4 p-3 rounded-lg bg-blue-50 border border-blue-200 text-sm text-blue-900"><strong>Working on a CV?</strong> Use the CV Polisher: it rewrites and reformats your CV automatically →</a>
+        <a href="/tools/cv-polisher" className="block mb-4 p-3 rounded-lg bg-blue-50 border border-blue-200 text-sm text-blue-900"><strong>Working on a CV?</strong> Use the AI CV Polisher: it rewrites and reformats your CV automatically →</a>
         <div className="flex flex-wrap gap-2 mb-3">
           {MODES.map(([k, l]) => <button key={k} onClick={() => { setMode(k); setRes(null); }} className={`px-4 py-2 rounded-full text-sm font-semibold border ${mode === k ? 'bg-blue-600 text-white border-blue-600' : 'border-slate-300 text-slate-700 hover:border-blue-600'}`}>{l}</button>)}
         </div>
         <textarea value={text} onChange={(e) => setText(e.target.value)} rows={18} placeholder={mode === 'cv' ? 'Paste your CV text here…' : 'Paste your draft here. Leave a blank line between paragraphs…'} className="w-full p-4 border border-slate-300 rounded-xl text-sm leading-relaxed focus:outline-none focus:ring-2 focus:ring-blue-500" />
         <div className="flex items-center justify-between mt-3">
           <span className="text-xs text-slate-500">Your draft is sent to Google Gemini for the AI review. We don't store it.</span>
-          <button onClick={run} disabled={text.trim().length < 80} className="px-6 py-2.5 bg-blue-600 text-white font-bold rounded-lg hover:bg-blue-700 disabled:opacity-50">Check my draft</button>
+          <button onClick={run} disabled={text.trim().length < 80} className="px-6 py-2.5 bg-blue-600 text-white font-bold rounded-lg hover:bg-blue-700 disabled:opacity-50">✨ Review my draft</button>
         </div>
       </div>
       <div>

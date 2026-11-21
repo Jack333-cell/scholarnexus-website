@@ -58,7 +58,7 @@ export default function Matcher() {
         <label className="block"><span className="text-sm font-semibold text-slate-700">Field or keywords (optional)</span>
           <input value={f.field} onChange={set('field')} placeholder="e.g. public health, law, AI, agriculture" className={sel + ' mt-1'} /></label>
         <label className="flex items-center gap-2 text-sm text-slate-700"><input type="checkbox" checked={f.funded} onChange={set('funded')} className="w-4 h-4" />Fully funded only</label>
-        <button className="w-full py-3 bg-blue-600 text-white font-bold rounded-lg hover:bg-blue-700">Find my matches</button>
+        <button className="w-full py-3 bg-blue-600 text-white font-bold rounded-lg hover:bg-blue-700">✨ Find my matches</button>
       </form>
       <div className="lg:col-span-3">
         {res === null && <p className="text-slate-500">Fill in the form and click <strong>Find my matches</strong>. Results are ranked by how well each open scholarship fits you and by how soon it closes.</p>}

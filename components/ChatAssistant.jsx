@@ -29,10 +29,10 @@ function answer(text) {
     return { text: 'You can reach us on WhatsApp at +254 754 835 544 or by email at info@scholarnexushub.com.', links: [['Chat on WhatsApp', WA]] };
   }
   if (is(/\b(cv|resume|résumé|curriculum vitae)\b/) && !is(/scholarships? (in|for)/)) {
-    return { text: 'Paste your CV into our CV Polisher: it rewrites weak phrases, fixes dates and layout and removes unneeded personal details. The preview is free; download the polished CV as PDF or Word for KES 250.', links: [['Polish my CV', '/tools/cv-polisher'], ['CV templates', '/templates/academic-cv']] };
+    return { text: 'Paste your CV into our AI CV Polisher: it rewrites weak phrases, fixes dates and layout and removes unneeded personal details. The preview is free; download the polished CV as PDF or Word for KES 250.', links: [['Polish my CV', '/tools/cv-polisher'], ['CV templates', '/templates/academic-cv']] };
   }
   if (is(/motivation letter|sop|statement of purpose|personal statement|essay|how to apply|tips/) && !is(/scholarships? (in|for)/)) {
-    return { text: 'Three quick tips: open with a real moment from your own work, link 2–3 specific modules or professors to your goals, and back every claim with numbers. Our free checker gives instant feedback on your draft.', links: [['Check my draft (free)', '/tools/writing-checker'], ['Templates', '/templates'], ['Get a full review', '/pricing']] };
+    return { text: 'Three quick tips: open with a real moment from your own work, link 2–3 specific modules or professors to your goals, and back every claim with numbers. Our free AI reviewer gives instant feedback on your draft.', links: [['Check my draft (free)', '/tools/writing-checker'], ['Templates', '/templates'], ['Get a full review', '/pricing']] };
   }
   if (is(/free|is it free|do you charge/)) {
     return { text: 'Yes. All scholarship listings, alerts and deadline reminders are free. Official scholarships never need an agent or an application fee.', links: [['Browse scholarships', '/scholarships']] };
@@ -45,7 +45,7 @@ function answer(text) {
   const results = matchScholarships(q, { limit: 5 });
   if (results.length) {
     const what = [q.fullyFunded && 'fully funded', ...q.levels.map(levelLabel), (q.countries.length ? 'in ' + q.countries.join(' or ') : q.europe ? 'in Europe' : '')].filter(Boolean).join(' ');
-    return { text: `Here ${results.length === 1 ? 'is the best match' : `are the best ${results.length} matches`}${what ? ` for ${what}` : ''}:`, results, links: [['Try the full matcher', '/tools/matcher']] };
+    return { text: `Here ${results.length === 1 ? 'is the best match' : `are the best ${results.length} matches`}${what ? ` for ${what}` : ''}:`, results, links: [['AI matcher', '/tools/matcher']] };
   }
   return { text: "I couldn't find a listing that fits that yet. Try a level and a country (for example \"PhD in Germany\"), or browse everything sorted by deadline.", links: [['All scholarships', '/scholarships'], ['Ask us on WhatsApp', WA]] };
 }

@@ -399,7 +399,7 @@ const ScholarNexus = () => {
               <a href="#services" onClick={() => setCurrentPage('home')} className="text-sm font-medium text-slate-600 hover:text-blue-600 transition">Services</a>
               <a href="/pricing" className="text-sm font-medium text-slate-600 hover:text-blue-600 transition">Prices</a>
               <a href="/templates" className="text-sm font-medium text-slate-600 hover:text-blue-600 transition">Templates</a>
-              <a href="/tools" className="text-sm font-medium text-slate-600 hover:text-blue-600 transition">Smart tools</a>
+              <a href="/tools" className="text-sm font-medium text-slate-600 hover:text-blue-600 transition">✨ AI tools</a>
               <a href="#about" className="text-sm font-medium text-slate-600 hover:text-blue-600 transition">About</a>
               <a href="mailto:info@scholarnexushub.com" className="text-sm font-medium text-slate-600 hover:text-blue-600 transition">Contact</a>
             </nav>
@@ -420,7 +420,7 @@ const ScholarNexus = () => {
               <a href="#services" onClick={() => { setCurrentPage('home'); setMobileMenuOpen(false); }} className="block py-2 text-sm font-medium text-slate-600 hover:text-blue-600">Services</a>
               <a href="/pricing" className="block py-2 text-sm font-medium text-slate-600 hover:text-blue-600">Prices</a>
               <a href="/templates" className="block py-2 text-sm font-medium text-slate-600 hover:text-blue-600">Templates</a>
-              <a href="/tools" className="block py-2 text-sm font-medium text-slate-600 hover:text-blue-600">Smart tools</a>
+              <a href="/tools" className="block py-2 text-sm font-medium text-slate-600 hover:text-blue-600">✨ AI tools</a>
               <a href="#about" className="block py-2 text-sm font-medium text-slate-600 hover:text-blue-600">About</a>
               <a href="mailto:info@scholarnexushub.com" className="block py-2 text-sm font-medium text-slate-600 hover:text-blue-600">Contact</a>
             </nav>
