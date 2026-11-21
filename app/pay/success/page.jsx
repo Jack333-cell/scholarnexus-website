@@ -3,6 +3,7 @@ import { SiteHeader, SiteFooter } from '../../../components/SiteShell';
 import { verifyPayment } from '../../../lib/paystack';
 import { getItem, templateTitle } from '../../../lib/catalog';
 import { WHATSAPP } from '../../../lib/pricing';
+import CvDownload from '../../../components/CvDownload';
 
 export const dynamic = 'force-dynamic';
 export const metadata = { title: 'Payment status', robots: { index: false } };
@@ -30,7 +31,9 @@ export default async function Page({ searchParams }) {
             <p className="text-slate-700 mb-1">Amount: KES {(tx.amount / 100).toLocaleString('en-US')} · Reference: <span className="font-mono">{tx.reference}</span></p>
             <p className="text-slate-500 text-sm mb-6">A receipt has been sent to {tx.customer?.email}.</p>
 
-            {item.files ? (
+            {item.kind === 'cvpolish' ? (
+              <CvDownload reference={tx.reference} hash={tx.metadata?.cv_hash} format={tx.metadata?.format} />
+            ) : item.files ? (
               <>
                 <h2 className="font-bold mb-3">Download your file{item.files.length > 1 ? 's' : ''}</h2>
                 <ul className="space-y-2 mb-4">

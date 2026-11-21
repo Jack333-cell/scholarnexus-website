@@ -56,3 +56,11 @@ Deployed on [Vercel](https://vercel.com). Every push to `main` redeploys the sit
 - `/tools/writing-checker`: browser-only feedback on motivation letters, SOPs and CVs (`lib/writingCheck.js`).
 - `/tools/listing-helper`: admin-only (not linked, noindex) draft X caption and data entry from a pasted
   announcement. Always verify details on the official page.
+
+## CV polisher (paid download)
+
+- `/tools/cv-polisher`: `lib/cvPolish.js` restructures a pasted CV (sections, action verbs, past tense,
+  dates, punctuation, removes personal details) in the browser and shows a blurred preview.
+- Buying (`cv-polish`, price in `lib/pricing.js` `CV_POLISH`) records the CV's SHA-256 and the chosen
+  format (pdf/docx) with the Paystack payment. `/api/cv/render` verifies the payment and the hash, then
+  builds the file with `lib/cvRender.js` (docx / pdf-lib). Nothing is stored on the server.

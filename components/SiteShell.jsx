@@ -72,7 +72,8 @@ export function SiteFooter() {
               <li><Link href="/pricing" className="hover:text-blue-400">Services and prices</Link></li>
               <li><Link href="/templates" className="hover:text-blue-400">CV, SOP and letter templates</Link></li>
               <li><Link href="/tools/matcher" className="hover:text-blue-400">Scholarship matcher</Link></li>
-              <li><Link href="/tools/writing-checker" className="hover:text-blue-400">Free SOP and CV checker</Link></li>
+              <li><Link href="/tools/cv-polisher" className="hover:text-blue-400">CV polisher</Link></li>
+              <li><Link href="/tools/writing-checker" className="hover:text-blue-400">Free SOP checker</Link></li>
             </ul>
           </div>
         </div>

@@ -10,6 +10,7 @@ export default function sitemap() {
     { url: `${SITE}/privacy`, lastModified: now, changeFrequency: 'yearly', priority: 0.3 },
     { url: `${SITE}/tools`, lastModified: now, changeFrequency: 'monthly', priority: 0.7 },
     { url: `${SITE}/tools/matcher`, lastModified: now, changeFrequency: 'weekly', priority: 0.8 },
+    { url: `${SITE}/tools/cv-polisher`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
     { url: `${SITE}/tools/writing-checker`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
     { url: `${SITE}/pricing`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
     { url: `${SITE}/templates`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },

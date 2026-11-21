@@ -10,6 +10,12 @@ export async function POST(req) {
   if (!item) return NextResponse.json({ error: 'unknown_item' }, { status: 400 });
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email) || email.length > 120) return NextResponse.json({ error: 'bad_email' }, { status: 400 });
 
+  // A polished-CV purchase is tied to one specific CV (its SHA-256) and the chosen format.
+  const extra = {};
+  if (item.kind === 'cvpolish') {
+    if (!/^[a-f0-9]{64}$/.test(String(body.cvHash || '')) || !['pdf', 'docx'].includes(body.format)) return NextResponse.json({ error: 'bad_cv' }, { status: 400 });
+    extra.cv_hash = body.cvHash; extra.format = body.format;
+  }
   const origin = new URL(req.url).origin;
   const { ok, json } = await paystack('/transaction/initialize', {
     method: 'POST',
@@ -20,6 +26,7 @@ export async function POST(req) {
       callback_url: `${origin}/pay/success`,
       metadata: {
         item_id: item.id,
+        ...extra,
         custom_fields: [{ display_name: 'Item', variable_name: 'item', value: item.name }],
       },
     }),

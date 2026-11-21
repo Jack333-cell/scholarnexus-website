@@ -27,7 +27,10 @@ function answer(text) {
   if (is(/contact|whatsapp|call|email|talk to|human|agent/)) {
     return { text: 'You can reach us on WhatsApp at +254 754 835 544 or by email at info@scholarnexushub.com.', links: [['Chat on WhatsApp', WA]] };
   }
-  if (is(/motivation letter|sop|statement of purpose|personal statement|essay|cv|resume|how to apply|tips/) && !is(/scholarships? (in|for)/)) {
+  if (is(/\b(cv|resume|résumé|curriculum vitae)\b/) && !is(/scholarships? (in|for)/)) {
+    return { text: 'Paste your CV into our CV Polisher: it rewrites weak phrases, fixes dates and layout and removes unneeded personal details. The preview is free; download the polished CV as PDF or Word for KES 250.', links: [['Polish my CV', '/tools/cv-polisher'], ['CV templates', '/templates/academic-cv']] };
+  }
+  if (is(/motivation letter|sop|statement of purpose|personal statement|essay|how to apply|tips/) && !is(/scholarships? (in|for)/)) {
     return { text: 'Three quick tips: open with a real moment from your own work, link 2–3 specific modules or professors to your goals, and back every claim with numbers. Our free checker gives instant feedback on your draft.', links: [['Check my draft (free)', '/tools/writing-checker'], ['Templates', '/templates'], ['Get a full review', '/pricing']] };
   }
   if (is(/free|is it free|do you charge/)) {
