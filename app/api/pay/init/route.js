@@ -24,6 +24,6 @@ export async function POST(req) {
       },
     }),
   });
-  if (!ok) return NextResponse.json({ error: 'paystack_error', message: String(json.message || '').slice(0, 200), keyShape: (() => { const k = (process.env.PAYSTACK_SECRET_KEY || '').trim(); return `${k.slice(0, 8)}… (${k.length} chars)`; })() }, { status: 502 });
+  if (!ok) return NextResponse.json({ error: 'paystack_error', message: String(json.message || '').slice(0, 200) }, { status: 502 });
   return NextResponse.json({ url: json.data.authorization_url });
 }
