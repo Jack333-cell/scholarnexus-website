@@ -1,6 +1,7 @@
 import './globals.css';
 import { Analytics } from '@vercel/analytics/next';
 import ChatAssistant from '../components/ChatAssistant';
+import { ADSENSE_CLIENT } from '../lib/ads';
 
 export const metadata = {
   metadataBase: new URL('https://www.scholarnexushub.com'),
@@ -13,6 +14,11 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      {ADSENSE_CLIENT && (
+        <head>
+          <script async src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_CLIENT}`} crossOrigin="anonymous" />
+        </head>
+      )}
       <body>
         {children}
         <ChatAssistant />

@@ -77,7 +77,7 @@ export function SiteFooter() {
           </div>
         </div>
         <div className="border-t border-slate-800 pt-8">
-          <p className="text-sm text-slate-400">&copy; {new Date().getFullYear()} ScholarNexus. All rights reserved.</p>
+          <p className="text-sm text-slate-400">&copy; {new Date().getFullYear()} ScholarNexus. All rights reserved. · <Link href="/privacy" className="hover:text-blue-400 underline">Privacy policy</Link></p>
         </div>
       </div>
     </footer>

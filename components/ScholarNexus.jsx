@@ -611,7 +611,7 @@ const ScholarNexus = () => {
             </div>
           </div>
           <div className="border-t border-slate-800 pt-8">
-            <p className="text-sm text-slate-400">&copy; {new Date().getFullYear()} ScholarNexus. All rights reserved.</p>
+            <p className="text-sm text-slate-400">&copy; {new Date().getFullYear()} ScholarNexus. All rights reserved. · <a href="/privacy" className="hover:text-blue-400 underline">Privacy policy</a></p>
           </div>
         </div>
       </footer>
