@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import { SiteHeader, SiteFooter } from '../../../components/SiteShell';
 import ProtectedPreview from '../../../components/ProtectedPreview';
 import { TEMPLATES, TEMPLATE_BUNDLE, fmtKES, fmtUSD, buyLink } from '../../../lib/pricing';
+import PayButton from '../../../components/PayButton';
 
 export const dynamicParams = false;
 export function generateStaticParams() { return TEMPLATES.map((t) => ({ slug: t.slug })); }
@@ -34,12 +35,12 @@ export default function Page({ params }) {
                 <li>✔ Full, editable Word file (.docx)</li>
                 <li>✔ Complete example plus tips in each section</li>
                 <li>✔ Pay by M-Pesa or card</li>
-                <li>✔ Delivered to your email or WhatsApp</li>
+                <li>✔ Instant download after payment</li>
               </ul>
               <p className="text-3xl font-bold text-green-700 mb-1">{fmtKES(t.kes)}</p>
               <p className="text-slate-500 mb-5">{fmtUSD(t.usd)} for international buyers</p>
-              <a href={buyLink(t)} target="_blank" rel="noopener noreferrer" className="block text-center w-full px-6 py-3 bg-blue-600 text-white font-bold rounded-lg hover:bg-blue-700 mb-3">Buy and get the full file</a>
-              <a href={buyLink(TEMPLATE_BUNDLE)} target="_blank" rel="noopener noreferrer" className="block text-center w-full px-6 py-3 border-2 border-blue-600 text-blue-700 font-semibold rounded-lg hover:bg-blue-50">Get all 6 for {fmtKES(TEMPLATE_BUNDLE.kes)}</a>
+              <div className="mb-3"><PayButton id={`tpl-${t.slug}`} label="Buy and download the full file" compact fallback={buyLink(t)} className="block text-center w-full px-6 py-3 bg-blue-600 text-white font-bold rounded-lg hover:bg-blue-700" /></div>
+              <PayButton id="tpl-bundle" label={`Get all 6 for ${fmtKES(TEMPLATE_BUNDLE.kes)}`} compact fallback={buyLink(TEMPLATE_BUNDLE)} className="block text-center w-full px-6 py-3 border-2 border-blue-600 text-blue-700 font-semibold rounded-lg hover:bg-blue-50" />
               <p className="text-xs text-slate-500 mt-5">Use the template as a model; committees reject copied letters. Want feedback on your own draft? <Link href="/pricing" className="text-blue-600 underline">Review services from KES 250</Link>.</p>
             </div>
           </aside>

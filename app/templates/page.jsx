@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { SiteHeader, SiteFooter } from '../../components/SiteShell';
 import ProtectedPreview from '../../components/ProtectedPreview';
 import { TEMPLATES, TEMPLATE_BUNDLE, fmtKES, fmtUSD, buyLink } from '../../lib/pricing';
+import PayButton from '../../components/PayButton';
 
 export const metadata = {
   title: 'CV, Motivation Letter and SOP Templates (Samples)',
@@ -23,7 +24,7 @@ export default function Page() {
             <p className="text-xl font-bold">{TEMPLATE_BUNDLE.title}</p>
             <p className="text-blue-100">Every template below in one download: {fmtKES(TEMPLATE_BUNDLE.kes)} ({fmtUSD(TEMPLATE_BUNDLE.usd)}) instead of {fmtKES(TEMPLATES.reduce((a, t) => a + t.kes, 0))}.</p>
           </div>
-          <a href={buyLink(TEMPLATE_BUNDLE)} target="_blank" rel="noopener noreferrer" className="px-6 py-3 bg-white text-blue-700 font-bold rounded-lg text-center hover:bg-blue-50">Buy the bundle</a>
+          <div className="sm:w-96"><PayButton id="tpl-bundle" label="Buy the bundle" fallback={buyLink(TEMPLATE_BUNDLE)} className="w-full px-6 py-3 bg-white text-blue-700 font-bold rounded-lg text-center hover:bg-blue-50" /></div>
         </div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -34,17 +35,15 @@ export default function Page() {
               </Link>
               <h2 className="font-bold text-lg mb-1"><Link href={`/templates/${t.slug}`} className="hover:text-blue-600">{t.title}</Link></h2>
               <p className="text-sm text-slate-600 mb-4 flex-1">{t.blurb}</p>
-              <div className="flex items-center justify-between gap-2">
+              <div className="flex items-center justify-between gap-2 mb-3">
                 <span className="font-bold text-green-700">{fmtKES(t.kes)} <span className="text-slate-500 font-normal text-sm">/ {fmtUSD(t.usd)}</span></span>
-                <div className="flex gap-2">
-                  <Link href={`/templates/${t.slug}`} className="px-3 py-1.5 border border-slate-300 rounded-md text-sm font-medium hover:border-blue-600 hover:text-blue-600">Preview</Link>
-                  <a href={buyLink(t)} target="_blank" rel="noopener noreferrer" className="px-3 py-1.5 bg-blue-600 text-white rounded-md text-sm font-semibold hover:bg-blue-700">Buy</a>
-                </div>
+                <Link href={`/templates/${t.slug}`} className="px-3 py-1.5 border border-slate-300 rounded-md text-sm font-medium hover:border-blue-600 hover:text-blue-600">Preview</Link>
               </div>
+              <PayButton id={`tpl-${t.slug}`} label={`Buy and download (${fmtKES(t.kes)})`} compact fallback={buyLink(t)} className="w-full px-3 py-2 bg-blue-600 text-white rounded-md text-sm font-semibold hover:bg-blue-700" />
             </div>
           ))}
         </div>
-        <p className="text-sm text-slate-500 mt-10">After payment, the full Word file (.docx) is sent to your email or WhatsApp. Need someone to review your own document instead? See <Link href="/pricing" className="text-blue-600 underline">our review services</Link>.</p>
+        <p className="text-sm text-slate-500 mt-10">Pay by M-Pesa or card through Paystack, then download the full Word file (.docx) straight away. Need someone to review your own document instead? See <Link href="/pricing" className="text-blue-600 underline">our review services</Link>.</p>
       </main>
       <SiteFooter />
     </div>

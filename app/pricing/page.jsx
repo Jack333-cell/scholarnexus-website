@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import { SiteHeader, SiteFooter } from '../../components/SiteShell';
 import { FREE, PRICE_GROUPS, TERMS, fmtKES, fmtUSD, orderLink } from '../../lib/pricing';
+import { serviceId } from '../../lib/catalog';
+import PayButton from '../../components/PayButton';
 
 export const metadata = {
   title: 'Services and Prices: CV, SOP, Thesis and Publication Support',
@@ -14,7 +16,7 @@ export default function Page() {
       <SiteHeader />
       <main className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
         <h1 className="text-3xl md:text-4xl font-bold mb-3">Services and Prices</h1>
-        <p className="text-lg text-slate-600 mb-8">Clear prices in Kenyan shillings and US dollars. Pay by M-Pesa or card.</p>
+        <p className="text-lg text-slate-600 mb-8">Clear prices in Kenyan shillings and US dollars. Pay securely online by M-Pesa or card through Paystack.</p>
 
         <section className="mb-10 rounded-xl border-2 border-green-200 bg-green-50 p-6">
           <h2 className="text-xl font-bold text-green-800 mb-3">Always free</h2>
@@ -52,7 +54,11 @@ export default function Page() {
                       <td className="px-4 py-3 text-right font-semibold text-green-700 whitespace-nowrap">{it.from ? 'from ' : ''}{fmtKES(it.kes)}</td>
                       <td className="px-4 py-3 text-right text-slate-600 whitespace-nowrap hidden sm:table-cell">{it.from ? 'from ' : ''}{fmtUSD(it.usd)}</td>
                       <td className="px-4 py-3 text-right">
-                        <a href={orderLink(`${it.name} (${it.from ? 'from ' : ''}${fmtKES(it.kes)})`)} target="_blank" rel="noopener noreferrer" className="inline-block px-3 py-1.5 bg-blue-600 text-white text-xs font-semibold rounded-md hover:bg-blue-700 whitespace-nowrap">{it.from ? 'Get a quote' : 'Order'}</a>
+                        {it.from ? (
+                          <a href={orderLink(`${it.name} (from ${fmtKES(it.kes)}), please send a quote`)} target="_blank" rel="noopener noreferrer" className="inline-block px-3 py-1.5 border border-blue-600 text-blue-700 text-xs font-semibold rounded-md hover:bg-blue-50 whitespace-nowrap">Get a quote</a>
+                        ) : (
+                          <div className="flex justify-end min-w-[7rem]"><PayButton id={serviceId(it.name)} label="Pay" compact fallback={orderLink(`${it.name} (${fmtKES(it.kes)})`)} className="px-4 py-1.5 bg-blue-600 text-white text-xs font-semibold rounded-md hover:bg-blue-700 whitespace-nowrap" /></div>
+                        )}
                       </td>
                     </tr>
                   ))}
@@ -67,7 +73,7 @@ export default function Page() {
           <ul className="space-y-2 text-slate-700">
             {TERMS.map(([b, t]) => <li key={b}><strong>{b}:</strong> {t}</li>)}
           </ul>
-          <p className="text-sm text-slate-500 mt-4">Prices in KES are based on about KES 129 per US dollar. Orders are confirmed on WhatsApp (+254 754 835 544) or by email at info@scholarnexushub.com.</p>
+          <p className="text-sm text-slate-500 mt-4">Prices in KES are based on about KES 129 per US dollar. Payments are processed securely by Paystack; we never see your card or M-Pesa PIN. After paying, send your document on WhatsApp (+254 754 835 544) or to info@scholarnexushub.com.</p>
         </section>
       </main>
       <SiteFooter />

@@ -41,5 +41,9 @@ Deployed on [Vercel](https://vercel.com). Every push to `main` redeploys the sit
 - Service prices live in `lib/pricing.js` (`PRICE_GROUPS`); `/pricing` is built from it.
 - Template previews are watermarked, partly blurred images in `public/templates/`. The full Word
   files are NOT in this repository (it is public) and are delivered privately after payment.
-- To switch a Buy button from WhatsApp to an online payment page, paste the Paystack payment-page
-  link into that template's `paymentUrl`.
+- Online payments use Paystack (M-Pesa and card, charged in KES). Prices are looked up on the server
+  from `lib/catalog.js`, so buyers can't change the amount.
+- Vercel environment variables: `PAYSTACK_SECRET_KEY` (sk_test_... while testing, sk_live_... when live)
+  and `TEMPLATE_KEY` (decrypts `private/templates/*.enc`). Without them, Pay buttons fall back to WhatsApp.
+- Full templates are stored encrypted in `private/templates/` and released by `/api/download` only after
+  Paystack confirms the payment (links valid 14 days).
