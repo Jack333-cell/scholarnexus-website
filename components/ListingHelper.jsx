@@ -41,6 +41,13 @@ export default function ListingHelper() {
   const len = xLength(caption);
   const entry = JSON.stringify({ slug, title: d.title, levels: [], country: d.country, amount: money, deadline: d.deadline, closeDate: null, excerpt: '', description: '', requirements: [], benefits: d.benefits, university: '', link: '[OFFICIAL URL]' }, null, 2);
   const copy = (s) => navigator.clipboard?.writeText(s);
+  const [ai, setAi] = useState(null);
+  const [aiBusy, setAiBusy] = useState(false);
+  async function draftAI() {
+    setAiBusy(true); setAi(null);
+    try { const r = await fetch('/api/ai/listing', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ text: raw }) }); if (r.ok) setAi(await r.json()); else setAi({ error: true }); } catch { setAi({ error: true }); }
+    setAiBusy(false);
+  }
 
   return (
     <div className="grid lg:grid-cols-2 gap-8">
@@ -56,8 +63,22 @@ export default function ListingHelper() {
         )}
       </div>
       <div className="space-y-6">
+        {raw && (
+          <div className="rounded-xl border border-purple-200 bg-purple-50 p-4">
+            <div className="flex items-center justify-between mb-2"><span className="font-semibold text-sm text-purple-900">✨ AI draft</span><button onClick={draftAI} disabled={aiBusy} className="px-3 py-1.5 bg-purple-700 text-white text-sm font-semibold rounded-lg disabled:opacity-60">{aiBusy ? 'Drafting…' : 'Draft with AI'}</button></div>
+            {ai?.error && <p className="text-sm text-red-700">AI unavailable right now; use the instant draft below.</p>}
+            {ai?.caption && (
+              <>
+                <pre className="whitespace-pre-wrap p-3 bg-white border border-purple-200 rounded-lg text-sm">{ai.caption}</pre>
+                <p className={`text-xs mt-1 font-semibold ${xLength(ai.caption) > 280 ? 'text-red-600' : 'text-green-700'}`}>{xLength(ai.caption)} / 280</p>
+                {ai.warnings?.length > 0 && <ul className="mt-2 text-xs text-amber-800 list-disc pl-5">{ai.warnings.map((w) => <li key={w}>Check: {w}</li>)}</ul>}
+                <button onClick={() => copy(ai.caption)} className="mt-2 px-4 py-2 bg-purple-700 text-white text-sm font-semibold rounded-lg">Copy AI caption</button>
+              </>
+            )}
+          </div>
+        )}
         <div>
-          <div className="flex items-center justify-between mb-1"><span className="font-semibold text-sm text-slate-700">Draft X caption</span><span className={`text-xs font-semibold ${len > 280 ? 'text-red-600' : 'text-green-700'}`}>{len} / 280</span></div>
+          <div className="flex items-center justify-between mb-1"><span className="font-semibold text-sm text-slate-700">Instant draft X caption</span><span className={`text-xs font-semibold ${len > 280 ? 'text-red-600' : 'text-green-700'}`}>{len} / 280</span></div>
           <pre className="whitespace-pre-wrap p-4 bg-slate-50 border border-slate-200 rounded-xl text-sm">{raw ? caption : 'The caption appears here.'}</pre>
           {raw && <button onClick={() => copy(caption)} className="mt-2 px-4 py-2 bg-blue-600 text-white text-sm font-semibold rounded-lg">Copy caption</button>}
         </div>

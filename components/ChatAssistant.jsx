@@ -3,9 +3,10 @@ import { useEffect, useRef, useState } from 'react';
 import { parseQuery, matchScholarships, closingNext, shortTitle, levelLabel } from '../lib/match';
 import { nextDate, daysLeft } from '../lib/collections';
 import { PRICE_GROUPS, fmtKES } from '../lib/pricing';
+import { scholarships } from '../lib/data';
 
-// Free, rule-based assistant: it reads the visitor's question and answers from the site's own
-// listings, prices and pages. No AI service is called and nothing is sent anywhere.
+// AI assistant: questions go to /api/ai/chat (Google Gemini, answering only from our listings and
+// prices). If the AI is unavailable, the rule-based answer() below is used instead.
 const WA = 'https://wa.me/254754835544';
 const cheapest = Math.min(...PRICE_GROUPS.flatMap((g) => g.items.map((i) => i.kes)));
 
@@ -54,15 +55,27 @@ const SUGGEST = ["Fully funded Master's in Europe", 'PhD scholarships', 'Closing
 export default function ChatAssistant() {
   const [open, setOpen] = useState(false);
   const [input, setInput] = useState('');
-  const [msgs, setMsgs] = useState([{ from: 'bot', text: "Hi! I'm the ScholarNexus assistant. Ask me about scholarships, deadlines, prices or templates." }]);
+  const [msgs, setMsgs] = useState([{ from: 'bot', text: "Hi! I'm the ScholarNexus AI assistant. Ask me about scholarships, deadlines, prices or templates. Please don't share ID or bank numbers here." }]);
   const end = useRef(null);
   useEffect(() => { end.current?.scrollIntoView({ behavior: 'smooth' }); }, [msgs, open]);
 
-  const send = (text) => {
+  const [busy, setBusy] = useState(false);
+  const send = async (text) => {
     const q = text.trim();
-    if (!q) return;
-    setMsgs((m) => [...m, { from: 'you', text: q }, { from: 'bot', ...answer(q) }]);
-    setInput('');
+    if (!q || busy) return;
+    const history = [...msgs, { from: 'you', text: q }];
+    setMsgs(history); setInput(''); setBusy(true);
+    let reply = null;
+    try {
+      const r = await fetch('/api/ai/chat', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ messages: history.map(({ from, text }) => ({ from, text })) }) });
+      if (r.ok) {
+        const j = await r.json();
+        const results = (j.slugs || []).map((slug) => scholarships.find((s) => s.slug === slug)).filter(Boolean).map((s) => { const d = daysLeft(nextDate(s)); return { s, reasons: [s.amount, ...(d !== null && d >= 0 ? [`${d} days left`] : [])] }; });
+        reply = { text: j.reply, results: results.length ? results : undefined, links: j.links?.length ? j.links : undefined };
+      }
+    } catch {}
+    setMsgs((m) => [...m, { from: 'bot', ...(reply || answer(q)) }]);
+    setBusy(false);
   };
 
   return (
@@ -71,8 +84,8 @@ export default function ChatAssistant() {
         <div className="fixed bottom-24 right-4 left-4 sm:left-auto sm:w-96 z-[60] bg-white rounded-2xl shadow-2xl border border-slate-200 flex flex-col max-h-[70vh]" role="dialog" aria-label="ScholarNexus assistant">
           <div className="flex items-center justify-between px-4 py-3 bg-blue-600 text-white rounded-t-2xl">
             <div>
-              <p className="font-bold leading-tight">ScholarNexus Assistant</p>
-              <p className="text-xs text-blue-100">Answers from our verified listings</p>
+              <p className="font-bold leading-tight">ScholarNexus AI Assistant</p>
+              <p className="text-xs text-blue-100">AI answers from our verified listings · Powered by Google Gemini</p>
             </div>
             <button onClick={() => setOpen(false)} aria-label="Close assistant" className="text-2xl leading-none px-2">×</button>
           </div>
@@ -103,6 +116,7 @@ export default function ChatAssistant() {
                 </div>
               </div>
             ))}
+            {busy && <div className="bg-slate-100 text-slate-500 rounded-2xl rounded-bl-sm px-3 py-2 w-fit text-sm">Thinking…</div>}
             {msgs.length === 1 && (
               <div className="flex flex-wrap gap-2">
                 {SUGGEST.map((s) => <button key={s} onClick={() => send(s)} className="text-xs px-2.5 py-1 rounded-full bg-amber-50 border border-amber-300 text-amber-800 hover:bg-amber-100">{s}</button>)}
@@ -118,7 +132,7 @@ export default function ChatAssistant() {
       )}
       <button onClick={() => setOpen((o) => !o)} aria-label={open ? 'Close assistant' : 'Open scholarship assistant'} className="fixed bottom-5 right-4 z-[60] flex items-center gap-2 pl-4 pr-5 py-3 rounded-full bg-blue-600 text-white font-semibold shadow-xl hover:bg-blue-700">
         <span className="text-xl" aria-hidden="true">{open ? '×' : '💬'}</span>
-        <span className="hidden sm:inline">{open ? 'Close' : 'Ask ScholarNexus'}</span>
+        <span className="hidden sm:inline">{open ? 'Close' : 'Ask ScholarNexus AI'}</span>
       </button>
     </>
   );

@@ -64,3 +64,10 @@ Deployed on [Vercel](https://vercel.com). Every push to `main` redeploys the sit
 - Buying (`cv-polish`, price in `lib/pricing.js` `CV_POLISH`) records the CV's SHA-256 and the chosen
   format (pdf/docx) with the Paystack payment. `/api/cv/render` verifies the payment and the hash, then
   builds the file with `lib/cvRender.js` (docx / pdf-lib). Nothing is stored on the server.
+
+## AI (Google Gemini)
+
+- Set `GEMINI_API_KEY` in Vercel (optional `GEMINI_MODEL`; otherwise the newest flash-lite/flash model is used).
+- `/api/ai/chat`, `/api/ai/polish-cv`, `/api/ai/review-letter`, `/api/ai/match`, `/api/ai/listing` answer only from
+  site data and the user's own text; the CV polisher rejects AI output containing numbers not in the original.
+- Every tool falls back to the rule-based version if the AI is unavailable. `/api/ai/status` reports readiness.

@@ -26,7 +26,18 @@ export default function CvPolisher() {
   const [paidRef, setPaidRef] = useState('');
   useEffect(() => { const r = new URLSearchParams(window.location.search).get('ref'); if (r) setPaidRef(r); }, []);
 
-  const polish = () => { setResult(polishCV(text)); setMsg(''); setTimeout(() => document.getElementById('cv-result')?.scrollIntoView({ behavior: 'smooth' }), 50); };
+  const [polishing, setPolishing] = useState(false);
+  const polish = async () => {
+    setPolishing(true); setMsg('');
+    let res = null;
+    try {
+      const r = await fetch('/api/ai/polish-cv', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ text }) });
+      if (r.ok) { const j = await r.json(); if (j.cv) res = { cv: j.cv, changes: j.changes || [], tips: j.tips || [], ai: true }; }
+    } catch {}
+    if (!res) res = { ...polishCV(text), ai: false };
+    setResult(res); setPolishing(false);
+    setTimeout(() => document.getElementById('cv-result')?.scrollIntoView({ behavior: 'smooth' }), 50);
+  };
 
   async function pay(e) {
     e.preventDefault(); setBusy(true); setMsg('');
@@ -53,16 +64,16 @@ export default function CvPolisher() {
           <label className="font-semibold text-slate-800">1. Paste your CV</label>
           <textarea value={text} onChange={(e) => setText(e.target.value)} rows={20} placeholder={'Paste the full text of your CV here (copy it from Word or PDF).\n\nKeep the section headings, e.g. Education, Experience, Skills, Referees.'} className="w-full mt-2 p-4 border border-slate-300 rounded-xl text-sm leading-relaxed focus:outline-none focus:ring-2 focus:ring-blue-500" />
           <div className="flex items-center justify-between mt-3 gap-3">
-            <span className="text-xs text-slate-500">Polishing happens in your browser. Nothing is uploaded until you choose to buy the file.</span>
-            <button onClick={polish} disabled={text.trim().length < 80} className="px-6 py-2.5 bg-blue-600 text-white font-bold rounded-lg hover:bg-blue-700 disabled:opacity-50 whitespace-nowrap">Polish my CV</button>
+            <span className="text-xs text-slate-500">Your CV is sent to Google Gemini to polish it. Remove ID or bank numbers first. We don't store it.</span>
+            <button onClick={polish} disabled={text.trim().length < 80 || polishing} className="px-6 py-2.5 bg-blue-600 text-white font-bold rounded-lg hover:bg-blue-700 disabled:opacity-50 whitespace-nowrap">{polishing ? 'AI is polishing…' : '✨ Polish my CV with AI'}</button>
           </div>
         </div>
         <div>
           {!result ? (
             <div className="rounded-xl bg-slate-50 border border-slate-200 p-6 text-slate-700">
-              <p className="font-semibold text-slate-900 mb-2">What the polisher does</p>
+              <p className="font-semibold text-slate-900 mb-2">What the AI polisher does</p>
               <ul className="text-sm space-y-1.5 list-disc pl-5">
-                <li>Rewrites weak phrases ("responsible for", "duties included", "worked on") into strong action verbs</li>
+                <li>Rewrites every bullet with strong action verbs and fixes grammar and spelling, without inventing anything</li>
                 <li>Puts achievements in the past tense and makes bullets consistent</li>
                 <li>Formats dates the same way (2018 – 2022, Jan 2023 – Present)</li>
                 <li>Removes details international applications don't need (date of birth, marital status, religion, ID)</li>
@@ -72,7 +83,7 @@ export default function CvPolisher() {
             </div>
           ) : (
             <div id="cv-result">
-              <p className="font-semibold text-slate-800 mb-2">2. What we improved ({result.changes.length} changes)</p>
+              <p className="font-semibold text-slate-800 mb-2">2. What {result.ai ? 'the AI' : 'we'} improved ({result.changes.length} changes){result.ai && <span className="ml-2 text-xs font-semibold px-2 py-0.5 rounded-full bg-purple-100 text-purple-800 align-middle">✨ AI-polished</span>}</p>
               <ul className="space-y-1.5 mb-4">{result.changes.map((c) => <li key={c} className="text-sm p-2 rounded-lg bg-green-50 border border-green-200 text-green-900">✔ {c}</li>)}</ul>
               {result.tips.length > 0 && <><p className="font-semibold text-slate-800 mb-2">Add these yourself for an even stronger CV</p><ul className="space-y-1.5">{result.tips.map((t) => <li key={t} className="text-sm p-2 rounded-lg bg-amber-50 border border-amber-200 text-amber-900">⚠ {t}</li>)}</ul></>}
             </div>

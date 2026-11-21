@@ -8,7 +8,17 @@ export default function WritingChecker() {
   const [mode, setMode] = useState('letter');
   const [text, setText] = useState('');
   const [res, setRes] = useState(null);
-  const run = () => setRes(mode === 'cv' ? checkCV(text) : checkLetter(text, mode));
+  const [ai, setAi] = useState(null);
+  const [aiBusy, setAiBusy] = useState(false);
+  const run = async () => {
+    setRes(mode === 'cv' ? checkCV(text) : checkLetter(text, mode));
+    setAi(null); setAiBusy(true);
+    try {
+      const r = await fetch('/api/ai/review-letter', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ text, kind: mode }) });
+      if (r.ok) setAi(await r.json());
+    } catch {}
+    setAiBusy(false);
+  };
   const color = (s) => (s >= 80 ? 'text-green-700' : s >= 55 ? 'text-amber-600' : 'text-red-600');
 
   return (
@@ -20,7 +30,7 @@ export default function WritingChecker() {
         </div>
         <textarea value={text} onChange={(e) => setText(e.target.value)} rows={18} placeholder={mode === 'cv' ? 'Paste your CV text here…' : 'Paste your draft here. Leave a blank line between paragraphs…'} className="w-full p-4 border border-slate-300 rounded-xl text-sm leading-relaxed focus:outline-none focus:ring-2 focus:ring-blue-500" />
         <div className="flex items-center justify-between mt-3">
-          <span className="text-xs text-slate-500">Your text stays in your browser. Nothing is uploaded or saved.</span>
+          <span className="text-xs text-slate-500">Your draft is sent to Google Gemini for the AI review. We don't store it.</span>
           <button onClick={run} disabled={text.trim().length < 80} className="px-6 py-2.5 bg-blue-600 text-white font-bold rounded-lg hover:bg-blue-700 disabled:opacity-50">Check my draft</button>
         </div>
       </div>
@@ -28,6 +38,17 @@ export default function WritingChecker() {
         {!res && <div className="rounded-xl bg-slate-50 border border-slate-200 p-6 text-slate-600"><p className="font-semibold text-slate-800 mb-2">What it checks</p><p className="text-sm">{mode === 'cv' ? 'Key sections, contact details, dates, action verbs, measurable results, unneeded personal details and length.' : 'Length, opening sentence, clichés, evidence and numbers, programme fit, career goals, sentence variety, structure and repetition.'}</p></div>}
         {res && (
           <div>
+            {aiBusy && <div className="mb-4 p-4 rounded-xl bg-purple-50 border border-purple-200 text-purple-900 text-sm">✨ AI reviewer is reading your draft…</div>}
+            {ai && (
+              <div className="mb-6 p-5 rounded-xl bg-purple-50 border border-purple-200">
+                <div className="flex items-baseline justify-between mb-2"><p className="font-bold text-purple-900">✨ AI reviewer</p><p className="text-sm text-purple-900"><span className="text-2xl font-bold">{ai.score}</span>/100</p></div>
+                <p className="text-sm text-slate-800 mb-3">{ai.summary}</p>
+                {ai.strengths.length > 0 && <><p className="text-sm font-semibold text-slate-900 mb-1">Strengths</p><ul className="mb-3 space-y-1">{ai.strengths.map((x) => <li key={x} className="text-sm text-slate-700">✔ {x}</li>)}</ul></>}
+                <p className="text-sm font-semibold text-slate-900 mb-1">How to improve</p>
+                <ul className="space-y-2">{ai.improvements.map((x) => <li key={x.issue} className="text-sm"><span className="font-semibold text-slate-900">{x.issue}:</span> <span className="text-slate-700">{x.suggestion}</span></li>)}</ul>
+              </div>
+            )}
+            <p className="font-semibold text-slate-800 mb-2">Quick checks</p>
             <div className="flex items-baseline gap-3 mb-4"><span className={`text-5xl font-bold ${color(res.score)}`}>{res.score}</span><span className="text-slate-600">/ 100 · {res.items.filter((i) => i.ok).length} of {res.items.length} checks passed</span></div>
             <ul className="space-y-2 mb-6">
               {res.items.map((i) => (

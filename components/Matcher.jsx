@@ -10,7 +10,9 @@ export default function Matcher() {
   const [res, setRes] = useState(null);
   const set = (k) => (e) => setF({ ...f, [k]: e.target.type === 'checkbox' ? e.target.checked : e.target.value });
 
-  function run(e) {
+  const [aiBusy, setAiBusy] = useState(false);
+  const [aiNote, setAiNote] = useState('');
+  async function run(e) {
     e.preventDefault();
     const q = parseQuery(f.field);
     q.levels = f.level === 'any' ? [] : [f.level];
@@ -20,7 +22,21 @@ export default function Matcher() {
     const nat = f.nat.toLowerCase();
     q.nationality = f.nat === 'Outside Africa' ? null : AFRICAN.find((w) => nat.startsWith(w)) || 'africa';
     q.nationalityOther = f.nat === 'Outside Africa';
-    setRes(matchScholarships(q, { limit: 10 }));
+    const base = matchScholarships(q, { limit: 12 });
+    setRes(base.slice(0, 10)); setAiNote('');
+    if (!base.length) return;
+    setAiBusy(true);
+    try {
+      const r = await fetch('/api/ai/match', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ profile: f, candidates: base.map((x) => x.s.slug) }) });
+      if (r.ok) {
+        const { ranked } = await r.json();
+        const bySlug = Object.fromEntries(base.map((x) => [x.s.slug, x]));
+        const ordered = ranked.map((x) => bySlug[x.slug] && { ...bySlug[x.slug], why: x.reason }).filter(Boolean);
+        base.forEach((x) => { if (!ordered.find((o) => o.s.slug === x.s.slug)) ordered.push(x); });
+        setRes(ordered.slice(0, 10)); setAiNote('✨ Ranked by AI for your profile');
+      }
+    } catch {}
+    setAiBusy(false);
   }
 
   const sel = 'w-full px-3 py-2.5 border border-slate-300 rounded-lg bg-white text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-500';
@@ -49,15 +65,18 @@ export default function Matcher() {
         {res && res.length === 0 && (
           <div className="rounded-xl border border-amber-300 bg-amber-50 p-5 text-slate-700">No open listings match all your choices yet. Try "Anywhere" or "Any level", or untick "Fully funded only". New scholarships are added every week; <a href="/#newsletter" className="text-blue-600 underline">get alerts by email</a>.</div>
         )}
+        {aiBusy && <p className="text-sm text-purple-800 mb-3">✨ AI is ranking your matches…</p>}
+        {aiNote && <p className="text-sm font-semibold text-purple-800 mb-3">{aiNote}</p>}
         {res && res.length > 0 && (
           <ol className="space-y-3">
-            {res.map(({ s, reasons }, i) => (
+            {res.map(({ s, reasons, why }, i) => (
               <li key={s.id}>
                 <a href={`/scholarships/${s.slug}`} className="flex gap-4 p-4 bg-white border border-slate-200 rounded-xl hover:shadow-lg hover:border-blue-500 transition">
                   <span className="flex-shrink-0 w-8 h-8 rounded-full bg-blue-600 text-white font-bold flex items-center justify-center">{i + 1}</span>
                   <span className="min-w-0">
                     <span className="block font-bold text-slate-900">{s.thumbnail} {shortTitle(s)}</span>
                     <span className="block text-sm text-slate-600 mt-0.5">{s.university} · {s.country}</span>
+                    {why && <span className="block text-sm text-slate-800 mt-1.5">💡 {why}</span>}
                     <span className="flex flex-wrap gap-1.5 mt-2">{reasons.slice(0, 4).map((r) => <span key={r} className="text-xs px-2 py-0.5 rounded-full bg-green-50 text-green-800 border border-green-200">{r}</span>)}</span>
                   </span>
                 </a>
