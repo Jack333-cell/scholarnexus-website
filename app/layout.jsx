@@ -9,6 +9,7 @@ export const metadata = {
   description: 'Verified, open scholarship opportunities with official links, plus guidance on applications, CVs and theses. Connect · Empower · Succeed.',
   alternates: { canonical: '/' },
   openGraph: { siteName: 'ScholarNexus', type: 'website', locale: 'en_GB' },
+  ...(ADSENSE_CLIENT ? { other: { 'google-adsense-account': ADSENSE_CLIENT } } : {}),
 };
 
 export default function RootLayout({ children }) {
