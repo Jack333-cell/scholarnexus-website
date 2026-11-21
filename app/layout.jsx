@@ -1,5 +1,6 @@
 import './globals.css';
 import { Analytics } from '@vercel/analytics/next';
+import ChatAssistant from '../components/ChatAssistant';
 
 export const metadata = {
   metadataBase: new URL('https://www.scholarnexushub.com'),
@@ -14,6 +15,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body>
         {children}
+        <ChatAssistant />
         <Analytics />
       </body>
     </html>

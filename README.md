@@ -47,3 +47,12 @@ Deployed on [Vercel](https://vercel.com). Every push to `main` redeploys the sit
   and `TEMPLATE_KEY` (decrypts `private/templates/*.enc`). Without them, Pay buttons fall back to WhatsApp.
 - Full templates are stored encrypted in `private/templates/` and released by `/api/download` only after
   Paystack confirms the payment (links valid 14 days).
+
+## Smart tools (free, no AI service)
+
+- `components/ChatAssistant.jsx`: floating "Ask ScholarNexus" assistant on every page. Rule-based answers
+  from `lib/data.js`, `lib/pricing.js` and `lib/match.js`; nothing is sent to any server.
+- `/tools/matcher`: ranks open listings by level, nationality, destination, funding and keywords.
+- `/tools/writing-checker`: browser-only feedback on motivation letters, SOPs and CVs (`lib/writingCheck.js`).
+- `/tools/listing-helper`: admin-only (not linked, noindex) draft X caption and data entry from a pasted
+  announcement. Always verify details on the official page.
