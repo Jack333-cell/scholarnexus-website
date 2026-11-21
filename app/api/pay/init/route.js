@@ -24,6 +24,6 @@ export async function POST(req) {
       },
     }),
   });
-  if (!ok) return NextResponse.json({ error: 'paystack_error' }, { status: 502 });
+  if (!ok) return NextResponse.json({ error: 'paystack_error', message: String(json.message || '').slice(0, 200) }, { status: 502 });
   return NextResponse.json({ url: json.data.authorization_url });
 }
