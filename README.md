@@ -35,3 +35,11 @@ Deployed on [Vercel](https://vercel.com). Every push to `main` redeploys the sit
 ## Contact
 - Email: info@scholarnexushub.com
 - WhatsApp: +254 754 835 544
+
+## Prices and templates
+
+- Service prices live in `lib/pricing.js` (`PRICE_GROUPS`); `/pricing` is built from it.
+- Template previews are watermarked, partly blurred images in `public/templates/`. The full Word
+  files are NOT in this repository (it is public) and are delivered privately after payment.
+- To switch a Buy button from WhatsApp to an online payment page, paste the Paystack payment-page
+  link into that template's `paymentUrl`.

@@ -16,7 +16,8 @@ export function SiteHeader() {
           <nav className="flex items-center gap-4 sm:gap-8 text-sm font-medium text-slate-600">
             <Link href="/scholarships" className="hover:text-blue-600 transition">Scholarships</Link>
             <Link href="/scholarships/closing-soon" className="hidden sm:inline hover:text-blue-600 transition">Closing soon</Link>
-            <Link href="/#services" className="hover:text-blue-600 transition">Services</Link>
+            <Link href="/pricing" className="hover:text-blue-600 transition">Prices</Link>
+            <Link href="/templates" className="hover:text-blue-600 transition">Templates</Link>
             <a href="mailto:info@scholarnexushub.com" className="hidden sm:inline hover:text-blue-600 transition">Contact</a>
           </nav>
         </div>
@@ -63,7 +64,8 @@ export function SiteFooter() {
               <li><a href="mailto:info@scholarnexushub.com" className="hover:text-blue-400 break-all">info@scholarnexushub.com</a></li>
               <li><a href="https://wa.me/254754835544" target="_blank" rel="noopener noreferrer" className="hover:text-blue-400">WhatsApp: +254 754 835 544</a></li>
               <li><a href="https://x.com/SaharanAfric" target="_blank" rel="noopener noreferrer" className="hover:text-blue-400">X: @SaharanAfric</a></li>
-              <li><Link href="/#services" className="hover:text-blue-400">Our services</Link></li>
+              <li><Link href="/pricing" className="hover:text-blue-400">Services and prices</Link></li>
+              <li><Link href="/templates" className="hover:text-blue-400">CV, SOP and letter templates</Link></li>
             </ul>
           </div>
         </div>

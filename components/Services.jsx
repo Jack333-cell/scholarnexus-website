@@ -145,6 +145,11 @@ export default function Services() {
           <p className="text-sm font-semibold tracking-wide uppercase text-amber-600 mb-2">Our Services</p>
           <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-3">Support for Education, Research &amp; Work</h2>
           <p className="text-slate-600">From thesis formatting to remote-work applications, tell us what you need and we'll guide you.</p>
+          <div className="flex flex-wrap justify-center gap-3 mt-5">
+            <a href="/pricing" className="px-5 py-2.5 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700">See prices (from KES 250)</a>
+            <a href="/templates" className="px-5 py-2.5 border-2 border-blue-600 text-blue-700 font-semibold rounded-lg hover:bg-blue-50">Preview CV &amp; SOP templates</a>
+          </div>
+          <p className="text-sm text-green-700 font-medium mt-3">Scholarship information on this site is always free.</p>
         </div>
 
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
