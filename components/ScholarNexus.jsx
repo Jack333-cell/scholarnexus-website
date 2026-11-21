@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import Services from './Services';
 import { scholarships } from '../lib/data';
 import { countries } from '../lib/collections';
-import { Search, Menu, X, ChevronRight, Calendar, Tag, Globe, Zap, TrendingUp, BookOpen, Award, ArrowLeft, MapPin, Clock, DollarSign, Users, CheckCircle, Mail, PlusCircle, Edit2, Trash2 } from 'lucide-react';
+import { Search, Menu, X, ChevronRight, Calendar, Tag, Globe, Zap, TrendingUp, BookOpen, Award, ArrowLeft, MapPin, Clock, DollarSign, Users, CheckCircle, Mail, PlusCircle, Edit2, Trash2, Home } from 'lucide-react';
 
 const ScholarNexus = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -393,6 +393,7 @@ const ScholarNexus = () => {
               </div>
             </div>
             <nav className="hidden md:flex items-center gap-8">
+              <a href="/" className="inline-flex items-center gap-1 px-3 py-1.5 rounded-md bg-blue-600 text-white text-sm font-medium hover:bg-blue-700 transition"><Home className="w-4 h-4" />Home</a>
               <a href="/scholarships" className="text-sm font-medium text-slate-600 hover:text-blue-600 transition">Scholarships</a>
               <button onClick={() => setCurrentPage('blog')} className="text-sm font-medium text-slate-600 hover:text-blue-600 transition">Blog</button>
               <a href="#services" onClick={() => setCurrentPage('home')} className="text-sm font-medium text-slate-600 hover:text-blue-600 transition">Services</a>
@@ -412,6 +413,7 @@ const ScholarNexus = () => {
           </div>
           {mobileMenuOpen && (
             <nav className="md:hidden pb-4 border-t border-slate-200">
+              <a href="/" className="flex items-center gap-2 py-2 text-sm font-semibold text-blue-600"><Home className="w-4 h-4" />Home</a>
               <a href="/scholarships" className="block py-2 text-sm font-medium text-slate-600 hover:text-blue-600">Scholarships</a>
               <button onClick={() => setCurrentPage('blog')} className="block py-2 text-sm font-medium text-slate-600 hover:text-blue-600 w-full text-left">Blog</button>
               <a href="#services" onClick={() => { setCurrentPage('home'); setMobileMenuOpen(false); }} className="block py-2 text-sm font-medium text-slate-600 hover:text-blue-600">Services</a>

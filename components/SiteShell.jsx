@@ -9,15 +9,19 @@ export function SiteHeader() {
           <Link href="/" className="flex items-center gap-3">
             <img src="/logo-mark.png" alt="ScholarNexus logo" width="44" height="44" className="rounded-lg bg-white" style={{ width: 44, height: 44 }} />
             <div>
-              <span className="block text-lg font-bold text-slate-900 leading-tight">ScholarNexus</span>
-              <span className="block text-xs text-slate-500">Connect · Empower · Succeed</span>
+              <span className="hidden min-[420px]:block text-lg font-bold text-slate-900 leading-tight">ScholarNexus</span>
+              <span className="hidden sm:block text-xs text-slate-500">Connect · Empower · Succeed</span>
             </div>
           </Link>
-          <nav className="flex items-center gap-4 sm:gap-8 text-sm font-medium text-slate-600">
+          <nav className="flex items-center gap-3 sm:gap-6 lg:gap-8 text-sm font-medium text-slate-600">
+            <Link href="/" className="inline-flex items-center gap-1 px-3 py-1.5 rounded-md bg-blue-600 text-white hover:bg-blue-700 transition" aria-label="Home">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-4 h-4" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5V21a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1z" /></svg>
+              <span>Home</span>
+            </Link>
             <Link href="/scholarships" className="hover:text-blue-600 transition">Scholarships</Link>
             <Link href="/scholarships/closing-soon" className="hidden sm:inline hover:text-blue-600 transition">Closing soon</Link>
             <Link href="/pricing" className="hover:text-blue-600 transition">Prices</Link>
-            <Link href="/templates" className="hover:text-blue-600 transition">Templates</Link>
+            <Link href="/templates" className="hidden sm:inline hover:text-blue-600 transition">Templates</Link>
             <a href="mailto:info@scholarnexushub.com" className="hidden sm:inline hover:text-blue-600 transition">Contact</a>
           </nav>
         </div>
