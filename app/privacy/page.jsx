@@ -24,7 +24,7 @@ export default function Page() {
           <li><strong>Messages:</strong> anything you send us on WhatsApp or by email, such as documents for review.</li>
           <li><strong>Usage data:</strong> anonymous statistics about page visits (Vercel Analytics), which do not identify you personally.</li>
         </ul>
-        <p className="mt-3"><strong>AI tools:</strong> when you use our AI assistant, AI CV polisher, AI SOP checker or AI scholarship matcher, the text you enter is sent to Google's Gemini service to generate the result. We do not store it on our servers. Under Google's terms, content sent to free-of-charge Gemini services may be used by Google to improve its products and may be read by human reviewers, so please do not enter ID numbers, bank details or other sensitive information. If the AI service is unavailable, the tools fall back to processing in your browser.</p>
+        <p className="mt-3"><strong>AI tools:</strong> when you use our AI assistant, AI CV polisher, AI SOP checker or AI scholarship matcher, the text you enter is processed by a third-party AI service provider to generate the result. We do not store it on our servers. The provider may use submitted content to improve its services and it may be read by its reviewers, so please do not enter ID numbers, bank details or other sensitive information. If the AI service is unavailable, the tools fall back to processing in your browser.</p>
 
         <H>How we use it</H>
         <ul className="list-disc pl-6 space-y-1">
@@ -44,7 +44,8 @@ export default function Page() {
           <li><strong>Brevo:</strong> newsletter emails.</li>
           <li><strong>Paystack:</strong> payment processing (M-Pesa and card).</li>
           <li><strong>Zoho Mail:</strong> our email inbox.</li>
-          <li><strong>Google:</strong> search, advertising where enabled, and Gemini for our AI tools.</li>
+          <li><strong>Google:</strong> search and, where enabled, advertising.</li>
+          <li><strong>AI service provider:</strong> processing for our AI tools.</li>
         </ul>
 
         <H>Your choices and rights</H>

@@ -5,7 +5,7 @@ import { nextDate, daysLeft } from '../lib/collections';
 import { PRICE_GROUPS, fmtKES } from '../lib/pricing';
 import { scholarships } from '../lib/data';
 
-// AI assistant: questions go to /api/ai/chat (Google Gemini, answering only from our listings and
+// AI assistant: questions go to /api/ai/chat (third-party AI model, answering only from our listings and
 // prices). If the AI is unavailable, the rule-based answer() below is used instead.
 const WA = 'https://wa.me/254754835544';
 const cheapest = Math.min(...PRICE_GROUPS.flatMap((g) => g.items.map((i) => i.kes)));
@@ -55,7 +55,7 @@ const SUGGEST = ["Fully funded Master's in Europe", 'PhD scholarships', 'Closing
 export default function ChatAssistant() {
   const [open, setOpen] = useState(false);
   const [input, setInput] = useState('');
-  const [msgs, setMsgs] = useState([{ from: 'bot', text: "Hi! I'm the ScholarNexus AI assistant. Ask me about scholarships, deadlines, prices or templates. Please don't share ID or bank numbers here." }]);
+  const [msgs, setMsgs] = useState([{ from: 'bot', text: "Hi! I'm the ScholarNexus AI assistant. Ask me about scholarships, deadlines, prices or templates." }]);
   const end = useRef(null);
   useEffect(() => { end.current?.scrollIntoView({ behavior: 'smooth' }); }, [msgs, open]);
 
@@ -85,7 +85,7 @@ export default function ChatAssistant() {
           <div className="flex items-center justify-between px-4 py-3 bg-blue-600 text-white rounded-t-2xl">
             <div>
               <p className="font-bold leading-tight">ScholarNexus AI Assistant</p>
-              <p className="text-xs text-blue-100">AI answers from our verified listings · Powered by Google Gemini</p>
+              <p className="text-xs text-blue-100">AI answers from our verified listings</p>
             </div>
             <button onClick={() => setOpen(false)} aria-label="Close assistant" className="text-2xl leading-none px-2">×</button>
           </div>

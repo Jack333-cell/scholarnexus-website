@@ -64,7 +64,7 @@ export default function CvPolisher() {
           <label className="font-semibold text-slate-800">1. Paste your CV</label>
           <textarea value={text} onChange={(e) => setText(e.target.value)} rows={20} placeholder={'Paste the full text of your CV here (copy it from Word or PDF).\n\nKeep the section headings, e.g. Education, Experience, Skills, Referees.'} className="w-full mt-2 p-4 border border-slate-300 rounded-xl text-sm leading-relaxed focus:outline-none focus:ring-2 focus:ring-blue-500" />
           <div className="flex items-center justify-between mt-3 gap-3">
-            <span className="text-xs text-slate-500">Your CV is sent to Google Gemini to polish it. Remove ID or bank numbers first. We don't store it.</span>
+            <span className="text-xs text-slate-500">Polished in seconds. <a href="/privacy" className="underline">Privacy</a></span>
             <button onClick={polish} disabled={text.trim().length < 80 || polishing} className="px-6 py-2.5 bg-blue-600 text-white font-bold rounded-lg hover:bg-blue-700 disabled:opacity-50 whitespace-nowrap">{polishing ? 'AI is polishing…' : '✨ Polish my CV with AI'}</button>
           </div>
         </div>

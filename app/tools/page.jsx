@@ -3,7 +3,7 @@ import { SiteHeader, SiteFooter } from '../../components/SiteShell';
 
 export const metadata = {
   title: 'AI Tools: AI CV Polisher, Scholarship Matcher and SOP Reviewer',
-  description: 'ScholarNexus AI tools powered by Google Gemini: polish your CV, find scholarships that fit you, get feedback on your SOP, and ask our AI assistant.',
+  description: 'ScholarNexus AI tools: polish your CV, find scholarships that fit you, get feedback on your SOP, and ask our AI assistant.',
   alternates: { canonical: '/tools' },
 };
 const TOOLS = [
@@ -18,7 +18,7 @@ export default function Page() {
       <SiteHeader />
       <main className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
         <h1 className="text-3xl md:text-4xl font-bold mb-2">✨ AI Tools</h1>
-        <p className="text-lg text-slate-600 mb-8">AI-powered help built on our verified scholarship listings, using Google Gemini. Free to try; text you enter is sent to Google Gemini to generate results, so don't include ID or bank numbers.</p>
+        <p className="text-lg text-slate-600 mb-8">AI-powered help built on our verified scholarship listings. Free to try.</p>
         <div className="grid md:grid-cols-2 gap-6">
           {TOOLS.map(([icon, t, d, href]) => {
             const body = (<><div className="text-4xl mb-3">{icon}</div><h2 className="font-bold text-lg mb-2">{t}</h2><p className="text-sm text-slate-600 mb-4">{d}</p>{href && <span className="text-blue-600 font-semibold text-sm">Open tool →</span>}</>);

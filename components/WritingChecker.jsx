@@ -30,7 +30,7 @@ export default function WritingChecker() {
         </div>
         <textarea value={text} onChange={(e) => setText(e.target.value)} rows={18} placeholder={mode === 'cv' ? 'Paste your CV text here…' : 'Paste your draft here. Leave a blank line between paragraphs…'} className="w-full p-4 border border-slate-300 rounded-xl text-sm leading-relaxed focus:outline-none focus:ring-2 focus:ring-blue-500" />
         <div className="flex items-center justify-between mt-3">
-          <span className="text-xs text-slate-500">Your draft is sent to Google Gemini for the AI review. We don't store it.</span>
+          <span className="text-xs text-slate-500">Reviewed in seconds. <a href="/privacy" className="underline">Privacy</a></span>
           <button onClick={run} disabled={text.trim().length < 80} className="px-6 py-2.5 bg-blue-600 text-white font-bold rounded-lg hover:bg-blue-700 disabled:opacity-50">✨ Review my draft</button>
         </div>
       </div>
