@@ -95,6 +95,30 @@ export default function Page({ params }) {
           <div className="bg-orange-50 rounded-lg p-4"><p className="text-sm text-slate-600 mb-1">Academic standard</p><p className="font-bold text-orange-700">{s.gpa}</p></div>
         </div>
 
+        <div className={`grid gap-4 mb-10 ${closed ? '' : 'lg:grid-cols-3'}`}>
+          <div className="rounded-xl bg-gradient-to-br from-blue-600 to-blue-700 p-6 text-white flex flex-col">
+            <h2 className="text-xl font-bold mb-1">Ready to apply?</h2>
+            <p className="text-blue-100 text-sm mb-4 flex-1">Apply on the official website. Deadline: <strong className="text-white">{s.deadline}</strong></p>
+            <a href={s.link} target="_blank" rel="noopener noreferrer" className="block text-center px-6 py-3 bg-white text-blue-700 font-bold rounded-lg hover:bg-blue-50 transition">Apply on the official page &rarr;</a>
+          </div>
+          {!closed && (
+            <section className="lg:col-span-2 rounded-xl border border-amber-200 bg-amber-50 p-5">
+              <h2 className="text-lg font-bold mb-1">Prepare for this scholarship</h2>
+              <p className="text-sm text-slate-600 mb-3">Strengthen your application before the deadline.</p>
+              <div className="grid sm:grid-cols-3 gap-3">
+                {prepFor(s).map((p) => (
+                  <a key={p.name} href={p.url} target="_blank" rel="sponsored noopener noreferrer" className="flex flex-col bg-white border border-slate-200 rounded-lg p-3 hover:shadow-md hover:border-amber-400 transition">
+                    <span className="font-semibold text-sm mb-1">{p.name}</span>
+                    <span className="text-xs text-slate-600 flex-1 mb-2">{p.why}</span>
+                    <span className="text-xs font-semibold text-amber-700">On {p.src} &rarr;</span>
+                  </a>
+                ))}
+              </div>
+              <p className="text-xs text-slate-500 mt-3"><Link href="/courses" className="underline">More courses and tutors</Link></p>
+            </section>
+          )}
+        </div>
+
         <section className="mb-8">
           <h2 className="text-2xl font-bold mb-3">Overview</h2>
           <p className="text-lg text-slate-700 leading-relaxed">{s.description}</p>
@@ -120,23 +144,6 @@ export default function Page({ params }) {
           <a href={s.link} target="_blank" rel="noopener noreferrer" className="inline-block px-8 py-3 bg-white text-blue-600 font-bold rounded-lg hover:bg-blue-50 transition">Visit the official page</a>
           <p className="text-blue-100 text-sm mt-4">Need help with your motivation letter, CV or proposal? <a href="https://wa.me/254754835544" target="_blank" rel="noopener noreferrer" className="underline font-semibold">Talk to ScholarNexus</a>.</p>
         </section>
-
-        {!closed && (
-          <section className="mb-10 rounded-xl border border-amber-200 bg-amber-50 p-6">
-            <h2 className="text-xl font-bold mb-1">Prepare for this scholarship</h2>
-            <p className="text-sm text-slate-600 mb-4">Strengthen your application before the deadline.</p>
-            <div className="grid sm:grid-cols-3 gap-3">
-              {prepFor(s).map((p) => (
-                <a key={p.name} href={p.url} target="_blank" rel="sponsored noopener noreferrer" className="flex flex-col bg-white border border-slate-200 rounded-lg p-4 hover:shadow-md hover:border-amber-400 transition">
-                  <span className="font-semibold mb-1">{p.name}</span>
-                  <span className="text-sm text-slate-600 flex-1 mb-2">{p.why}</span>
-                  <span className="text-sm font-semibold text-amber-700">On {p.src} &rarr;</span>
-                </a>
-              ))}
-            </div>
-            <p className="text-xs text-slate-500 mt-3"><Link href="/courses" className="underline">More courses and tutors</Link></p>
-          </section>
-        )}
 
         <div className="flex flex-wrap gap-2 mb-10">
           {levelLinks.map((l) => <Link key={l.slug} href={l.path} className="px-3 py-1.5 border border-slate-300 rounded-full text-sm hover:border-blue-600 hover:text-blue-600">More {l.label} opportunities</Link>)}
