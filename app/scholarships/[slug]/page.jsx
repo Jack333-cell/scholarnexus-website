@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import { SiteHeader, SiteFooter } from '../../../components/SiteShell';
 import ScholarshipCards, { DeadlineBadge } from '../../../components/ScholarshipCards';
 import { scholarships } from '../../../lib/data';
+import { prepFor } from '../../../lib/affiliates';
 import { SITE, getBySlug, shortTitle, isClosed, formatDate, sortByDeadline, countries, levels } from '../../../lib/collections';
 
 export const revalidate = 3600;
@@ -106,6 +107,23 @@ export default function Page({ params }) {
           <a href={s.link} target="_blank" rel="noopener noreferrer" className="inline-block px-8 py-3 bg-white text-blue-600 font-bold rounded-lg hover:bg-blue-50 transition">Visit the official page</a>
           <p className="text-blue-100 text-sm mt-4">Need help with your motivation letter, CV or proposal? <a href="https://wa.me/254754835544" target="_blank" rel="noopener noreferrer" className="underline font-semibold">Talk to ScholarNexus</a>.</p>
         </section>
+
+        {!closed && (
+          <section className="mb-10 rounded-xl border border-amber-200 bg-amber-50 p-6">
+            <h2 className="text-xl font-bold mb-1">Prepare for this scholarship</h2>
+            <p className="text-sm text-slate-600 mb-4">Strengthen your application before the deadline.</p>
+            <div className="grid sm:grid-cols-3 gap-3">
+              {prepFor(s).map((p) => (
+                <a key={p.name} href={p.url} target="_blank" rel="sponsored noopener noreferrer" className="flex flex-col bg-white border border-slate-200 rounded-lg p-4 hover:shadow-md hover:border-amber-400 transition">
+                  <span className="font-semibold mb-1">{p.name}</span>
+                  <span className="text-sm text-slate-600 flex-1 mb-2">{p.why}</span>
+                  <span className="text-sm font-semibold text-amber-700">On {p.src} &rarr;</span>
+                </a>
+              ))}
+            </div>
+            <p className="text-xs text-slate-500 mt-3">Affiliate links: we may earn a small commission at no extra cost to you. <Link href="/courses" className="underline">More courses and tutors</Link>.</p>
+          </section>
+        )}
 
         <div className="flex flex-wrap gap-2 mb-10">
           {levelLinks.map((l) => <Link key={l.slug} href={l.path} className="px-3 py-1.5 border border-slate-300 rounded-full text-sm hover:border-blue-600 hover:text-blue-600">More {l.label} opportunities</Link>)}
