@@ -46,9 +46,21 @@ export default function Page({ params }) {
     ],
   };
 
+  const article = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: shortTitle(s).slice(0, 110),
+    description: s.excerpt,
+    image: [`${SITE}/scholarships/${s.slug}/opengraph-image`],
+    author: { '@type': 'Organization', name: 'ScholarNexus', url: SITE + '/about' },
+    publisher: { '@type': 'Organization', name: 'ScholarNexus', logo: { '@type': 'ImageObject', url: SITE + '/logo-mark.png' } },
+    mainEntityOfPage: `${SITE}/scholarships/${s.slug}`,
+    about: { '@type': 'EducationalOccupationalProgram', name: shortTitle(s), provider: { '@type': 'Organization', name: s.university }, ...(s.closeDate ? { applicationDeadline: s.lastDate || s.closeDate } : {}) },
+  };
   return (
     <div className="min-h-screen bg-white text-slate-900">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(crumbs) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(article) }} />
       <SiteHeader />
       <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
         <nav className="text-sm text-slate-500 mb-6">
@@ -66,7 +78,8 @@ export default function Page({ params }) {
           <div className="text-5xl md:text-6xl" aria-hidden="true">{s.thumbnail}</div>
           <div>
             <h1 className="text-3xl md:text-4xl font-bold text-slate-900 mb-2">{s.title}</h1>
-            <p className="text-lg text-slate-600 mb-3">{s.university}</p>
+            <p className="text-lg text-slate-600 mb-1">{s.university}</p>
+            <p className="text-sm text-slate-500 mb-3">By the ScholarNexus team · {s.date.replace(/^Updated/, 'Last checked')} against the official source · <Link href="/editorial-policy" className="underline hover:text-blue-600">How we verify</Link></p>
             <div className="flex flex-wrap items-center gap-2">
               <span className="px-3 py-1 bg-blue-100 text-blue-700 text-sm font-medium rounded-full">🌍 {s.country}</span>
               <span className="px-3 py-1 bg-green-100 text-green-700 text-sm font-medium rounded-full">💰 {s.amount}</span>

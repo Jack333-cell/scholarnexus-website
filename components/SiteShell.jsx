@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { countries, levels, fullyFunded, forAfrican } from '../lib/collections';
+import { countries, levels, fullyFunded, forAfrican, forKenyan } from '../lib/collections';
 
 export function SiteHeader() {
   return (
@@ -24,7 +24,7 @@ export function SiteHeader() {
             <Link href="/pricing" className="hover:text-blue-600 transition">Prices</Link>
             <Link href="/templates" className="hidden sm:inline hover:text-blue-600 transition">Templates</Link>
             <Link href="/courses" className="hidden md:inline hover:text-blue-600 transition">Courses</Link>
-            <a href="mailto:info@scholarnexushub.com" className="hidden sm:inline hover:text-blue-600 transition">Contact</a>
+            <Link href="/contact" className="hidden sm:inline hover:text-blue-600 transition">Contact</Link>
           </nav>
         </div>
       </div>
@@ -51,6 +51,7 @@ export function SiteFooter() {
               <li><Link href="/scholarships/closing-soon" className="hover:text-blue-400">Closing soon</Link></li>
               <li><Link href={fullyFunded.path} className="hover:text-blue-400">Fully funded</Link></li>
               <li><Link href={forAfrican.path} className="hover:text-blue-400">For African students</Link></li>
+              <li><Link href={forKenyan.path} className="hover:text-blue-400">For Kenyan students</Link></li>
               {levels.map((l) => (
                 <li key={l.slug}><Link href={l.path} className="hover:text-blue-400">{l.label}</Link></li>
               ))}
@@ -80,7 +81,7 @@ export function SiteFooter() {
           </div>
         </div>
         <div className="border-t border-slate-800 pt-8">
-          <p className="text-sm text-slate-400">&copy; {new Date().getFullYear()} ScholarNexus. All rights reserved. · <Link href="/privacy" className="hover:text-blue-400 underline">Privacy policy</Link></p>
+          <p className="text-sm text-slate-400">&copy; {new Date().getFullYear()} ScholarNexus. All rights reserved. · <Link href="/about" className="hover:text-blue-400 underline">About</Link> · <Link href="/contact" className="hover:text-blue-400 underline">Contact</Link> · <Link href="/editorial-policy" className="hover:text-blue-400 underline">Editorial policy</Link> · <Link href="/privacy" className="hover:text-blue-400 underline">Privacy policy</Link></p>
         </div>
       </div>
     </footer>

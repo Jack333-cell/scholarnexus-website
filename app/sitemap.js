@@ -7,6 +7,9 @@ export default function sitemap() {
   return [
     { url: `${SITE}/`, lastModified: now, changeFrequency: 'daily', priority: 1 },
     { url: `${SITE}/scholarships`, lastModified: now, changeFrequency: 'daily', priority: 0.9 },
+    { url: `${SITE}/about`, lastModified: now, changeFrequency: 'monthly', priority: 0.5 },
+    { url: `${SITE}/contact`, lastModified: now, changeFrequency: 'yearly', priority: 0.4 },
+    { url: `${SITE}/editorial-policy`, lastModified: now, changeFrequency: 'yearly', priority: 0.4 },
     { url: `${SITE}/privacy`, lastModified: now, changeFrequency: 'yearly', priority: 0.3 },
     { url: `${SITE}/tools`, lastModified: now, changeFrequency: 'monthly', priority: 0.7 },
     { url: `${SITE}/tools/matcher`, lastModified: now, changeFrequency: 'weekly', priority: 0.8 },

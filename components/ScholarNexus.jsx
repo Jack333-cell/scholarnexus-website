@@ -613,7 +613,7 @@ const ScholarNexus = () => {
             </div>
           </div>
           <div className="border-t border-slate-800 pt-8">
-            <p className="text-sm text-slate-400">&copy; {new Date().getFullYear()} ScholarNexus. All rights reserved. · <a href="/privacy" className="hover:text-blue-400 underline">Privacy policy</a></p>
+            <p className="text-sm text-slate-400">&copy; {new Date().getFullYear()} ScholarNexus. All rights reserved. · <a href="/about" className="hover:text-blue-400 underline">About</a> · <a href="/contact" className="hover:text-blue-400 underline">Contact</a> · <a href="/editorial-policy" className="hover:text-blue-400 underline">Editorial policy</a> · <a href="/privacy" className="hover:text-blue-400 underline">Privacy policy</a></p>
           </div>
         </div>
       </footer>
