@@ -23,6 +23,7 @@ export function SiteHeader() {
             <Link href="/tools" className="hidden sm:inline hover:text-blue-600 transition">✨ AI tools</Link>
             <Link href="/pricing" className="hover:text-blue-600 transition">Prices</Link>
             <Link href="/templates" className="hidden sm:inline hover:text-blue-600 transition">Templates</Link>
+            <Link href="/courses" className="hidden md:inline hover:text-blue-600 transition">Courses</Link>
             <a href="mailto:info@scholarnexushub.com" className="hidden sm:inline hover:text-blue-600 transition">Contact</a>
           </nav>
         </div>
@@ -71,6 +72,7 @@ export function SiteFooter() {
               <li><a href="https://x.com/SaharanAfric" target="_blank" rel="noopener noreferrer" className="hover:text-blue-400">X: @SaharanAfric</a></li>
               <li><Link href="/pricing" className="hover:text-blue-400">Services and prices</Link></li>
               <li><Link href="/templates" className="hover:text-blue-400">CV, SOP and letter templates</Link></li>
+              <li><Link href="/courses" className="hover:text-blue-400">Courses to boost your application</Link></li>
               <li><Link href="/tools/matcher" className="hover:text-blue-400">AI scholarship matcher</Link></li>
               <li><Link href="/tools/cv-polisher" className="hover:text-blue-400">AI CV polisher</Link></li>
               <li><Link href="/tools/writing-checker" className="hover:text-blue-400">AI SOP reviewer</Link></li>

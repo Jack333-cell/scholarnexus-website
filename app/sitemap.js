@@ -13,6 +13,7 @@ export default function sitemap() {
     { url: `${SITE}/tools/cv-polisher`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
     { url: `${SITE}/tools/writing-checker`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
     { url: `${SITE}/pricing`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
+    { url: `${SITE}/courses`, lastModified: now, changeFrequency: 'weekly', priority: 0.7 },
     { url: `${SITE}/templates`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
     ...TEMPLATES.map((t) => ({ url: `${SITE}/templates/${t.slug}`, lastModified: now, changeFrequency: 'monthly', priority: 0.6 })),
     ...allCollections().map((c) => ({ url: SITE + c.path, lastModified: now, changeFrequency: 'daily', priority: 0.8 })),
