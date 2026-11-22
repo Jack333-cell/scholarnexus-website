@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { SiteHeader, SiteFooter } from '../../../components/SiteShell';
 import { verifyPayment } from '../../../lib/paystack';
-import { getItem, templateTitle } from '../../../lib/catalog';
+import { getItem, templateTitle, fileExt } from '../../../lib/catalog';
 import { WHATSAPP } from '../../../lib/pricing';
 import CvDownload from '../../../components/CvDownload';
 
@@ -38,10 +38,10 @@ export default async function Page({ searchParams }) {
                 <h2 className="font-bold mb-3">Download your file{item.files.length > 1 ? 's' : ''}</h2>
                 <ul className="space-y-2 mb-4">
                   {item.files.map((f) => (
-                    <li key={f}><a href={`/api/download?ref=${encodeURIComponent(tx.reference)}&file=${encodeURIComponent(f)}`} className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700">⬇ {templateTitle(f)} (.docx)</a></li>
+                    <li key={f}><a href={`/api/download?ref=${encodeURIComponent(tx.reference)}&file=${encodeURIComponent(f)}`} className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700">⬇ {templateTitle(f)} (.{fileExt(f)})</a></li>
                   ))}
                 </ul>
-                <p className="text-sm text-slate-600">Bookmark this page: your download links work for 14 days. Use the templates as models and write your own story.</p>
+                <p className="text-sm text-slate-600">Bookmark this page: your download links work for 14 days.</p>
               </>
             ) : (
               <>

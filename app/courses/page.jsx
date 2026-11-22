@@ -1,5 +1,7 @@
 import { SiteHeader, SiteFooter } from '../../components/SiteShell';
+import Link from 'next/link';
 import { COURSE_GROUPS, UDEMY_BASE, TUTORS } from '../../lib/affiliates';
+import { GUIDES, fmtKES } from '../../lib/pricing';
 
 export const metadata = {
   title: 'Courses to Boost Your Scholarship Application',
@@ -15,6 +17,13 @@ export default function Page() {
         <h1 className="text-3xl md:text-4xl font-bold mb-3">Courses to Boost Your Application</h1>
         <p className="text-lg text-slate-600 mb-2">Language tests, writing, research and career skills that make scholarship applications stronger. Work 1-on-1 with a tutor, or learn at your own pace: Udemy courses are often on sale for a few dollars, and you keep lifetime access.</p>
         <p className="text-xs text-slate-500 mb-8">Disclosure: some links on this page are affiliate links.</p>
+
+        {GUIDES.map((g) => (
+          <Link key={g.slug} href={`/guides/${g.slug}`} className="mb-8 flex flex-col sm:flex-row sm:items-center justify-between gap-3 rounded-2xl border-2 border-amber-300 bg-amber-50 p-5 hover:shadow-lg transition">
+            <span><span className="block text-xs font-semibold text-amber-700 mb-1">NEW PDF GUIDE</span><span className="block text-lg font-bold">{g.title}</span><span className="block text-sm text-slate-600">Which courses to buy, free official practice and a 6-week plan.</span></span>
+            <span className="shrink-0 px-5 py-2.5 bg-blue-600 text-white font-bold rounded-lg text-center">Get it for {fmtKES(g.kes)} &rarr;</span>
+          </Link>
+        ))}
 
         <section className="mb-10 rounded-2xl bg-pink-50 border border-pink-200 p-6">
           <h2 className="text-2xl font-bold mb-1">Learn with a 1-on-1 tutor</h2>

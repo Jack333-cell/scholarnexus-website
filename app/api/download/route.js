@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import { readFile } from 'fs/promises';
 import path from 'path';
 import crypto from 'crypto';
-import { getItem } from '../../../lib/catalog';
+import { getItem, fileExt } from '../../../lib/catalog';
 import { verifyPayment } from '../../../lib/paystack';
 
 export const dynamic = 'force-dynamic';
@@ -22,16 +22,18 @@ export async function GET(req) {
 
   const key = Buffer.from(process.env.TEMPLATE_KEY || '', 'hex');
   if (key.length !== 32) return NextResponse.json({ error: 'not_configured' }, { status: 503 });
-  const blob = await readFile(path.join(process.cwd(), 'private', 'templates', `${file}.docx.enc`));
+  const ext = fileExt(file);
+  const blob = await readFile(path.join(process.cwd(), 'private', 'templates', `${file}.${ext}.enc`));
   const iv = blob.subarray(0, 12), tag = blob.subarray(blob.length - 16), ct = blob.subarray(12, blob.length - 16);
   const d = crypto.createDecipheriv('aes-256-gcm', key, iv);
   d.setAuthTag(tag);
-  const docx = Buffer.concat([d.update(ct), d.final()]);
+  const out = Buffer.concat([d.update(ct), d.final()]);
 
-  return new NextResponse(docx, {
+  const type = ext === 'pdf' ? 'application/pdf' : 'application/vnd.openxmlformats-officedocument.wordprocessingml.document';
+  return new NextResponse(out, {
     headers: {
-      'Content-Type': 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
-      'Content-Disposition': `attachment; filename="ScholarNexus-${file}.docx"`,
+      'Content-Type': type,
+      'Content-Disposition': `attachment; filename="ScholarNexus-${file}.${ext}"`,
       'Cache-Control': 'private, no-store',
     },
   });

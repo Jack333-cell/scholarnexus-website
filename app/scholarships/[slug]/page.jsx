@@ -114,7 +114,7 @@ export default function Page({ params }) {
                   </a>
                 ))}
               </div>
-              <p className="text-xs text-slate-500 mt-3"><Link href="/courses" className="underline">More courses and tutors</Link></p>
+              <p className="text-xs text-slate-500 mt-3"><Link href="/courses" className="underline">More courses and tutors</Link> · <Link href="/guides/ielts-courses" className="underline font-semibold text-amber-700">IELTS courses guide (KSh 250)</Link></p>
             </section>
           )}
         </div>
