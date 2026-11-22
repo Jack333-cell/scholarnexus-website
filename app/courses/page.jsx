@@ -14,7 +14,7 @@ export default function Page() {
       <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
         <h1 className="text-3xl md:text-4xl font-bold mb-3">Courses to Boost Your Application</h1>
         <p className="text-lg text-slate-600 mb-2">Language tests, writing, research and career skills that make scholarship applications stronger. Work 1-on-1 with a tutor, or learn at your own pace: Udemy courses are often on sale for a few dollars, and you keep lifetime access.</p>
-        <p className="text-xs text-slate-500 mb-8">Disclosure: some links on this page are affiliate links. If you buy through them, ScholarNexus may earn a small commission at no extra cost to you. This helps keep our scholarship listings free.</p>
+        <p className="text-xs text-slate-500 mb-8">Disclosure: some links on this page are affiliate links.</p>
 
         <section className="mb-10 rounded-2xl bg-pink-50 border border-pink-200 p-6">
           <h2 className="text-2xl font-bold mb-1">Learn with a 1-on-1 tutor</h2>

@@ -121,7 +121,7 @@ export default function Page({ params }) {
                 </a>
               ))}
             </div>
-            <p className="text-xs text-slate-500 mt-3">Affiliate links: we may earn a small commission at no extra cost to you. <Link href="/courses" className="underline">More courses and tutors</Link>.</p>
+            <p className="text-xs text-slate-500 mt-3"><Link href="/courses" className="underline">More courses and tutors</Link></p>
           </section>
         )}
 
