@@ -1,0 +1,21 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="robots" content="noindex">
+<title>ScholarNexus poster relay</title>
+<p id="s">Sending poster…</p>
+<script>
+// Used by ScholarNexus's own posting automation: hands a poster from /posters/ to the
+// window that opened this page (the Facebook or X composer), then closes.
+(async () => {
+  const s = document.getElementById('s');
+  try {
+    const f = new URLSearchParams(location.search).get('f') || '';
+    if (!/^[\w.-]+\.(png|jpe?g)$/i.test(f)) throw new Error('bad file name');
+    const b = await (await fetch('/posters/' + f)).blob();
+    if (!window.opener) throw new Error('no opener');
+    for (const o of ['https://www.facebook.com', 'https://x.com']) window.opener.postMessage({ snPoster: true, name: f, blob: b }, o);
+    s.textContent = 'Sent ' + f + ' (' + b.size + ' bytes)';
+    setTimeout(() => window.close(), 1500);
+  } catch (e) { s.textContent = 'Error: ' + e.message; }
+})();
+</script>
