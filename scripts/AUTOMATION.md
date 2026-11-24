@@ -42,6 +42,9 @@ window.__file=new File([a],'poster.png',{type:m.match(/:(.*?);/)[1]}); window.__
 - **Facebook** (after opening the composer): paste into the dialog's `[contenteditable=true]`: `const d=new DataTransfer(); d.items.add(window.__file); ed.dispatchEvent(new ClipboardEvent('paste',{clipboardData:d,bubbles:true,cancelable:true}))` — an `img` with naturalWidth 1080 appears in the dialog. Paste the caption text separately (DataTransfer with text/plain) BEFORE the image.
 Do steps 1–3 in a fresh page load for every post (window.name is cleared after use).
 
+**Facebook now wipes `window.name` on load (seen 24 Nov 2026).** For Facebook carry the PNG in the URL hash instead: on the poster page run
+`setTimeout(()=>{location.href='https://www.facebook.com/#SNP'+u.split(',')[1]},100)` (u = the data URL), wait ~3 s, then on facebook.com read `location.hash.slice(4)`, call `history.replaceState(null,'',location.pathname)` and build the File from that base64. X still works with `window.name`.
+
 ## X posting
 Navigate (force) to `https://x.com/compose/post`, wait for `[data-testid=tweetTextarea_0]` (empty), paste text via ClipboardEvent DataTransfer text/plain, verify `innerText.replace(/\n\n\n/g,'\n\n')===txt`, attach poster, click `[data-testid=tweetButton]`, wait for "Your post was sent". Keep text ≤ 280 chars (URLs count 23). Verify with `https://x.com/search?q=from%3ASaharanAfric%20<term>&f=live`.
 
@@ -49,7 +52,7 @@ Navigate (force) to `https://x.com/compose/post`, wait for `[data-testid=tweetTe
 1. `https://www.facebook.com/` → click role=button containing "What's on your mind, ScholarNexus" (if it says another name, stop: wrong profile).
 2. Paste caption, then poster, into the dialog `[contenteditable=true]`; wait ~4 s; click "Next".
 3. Post settings loads slowly: take a screenshot / wait until "Share to groups" shows, then click that row ONCE by coordinate (ref clicks may only hover). Wait ~4 s.
-4. Tick checkboxes (`[role=dialog] input[type=checkbox]` that are not role=switch) for: ScholarNexus- Scholarship & Academic Support Hub; Scholarship Positions and Study Abroad; USA Scholarships 2026-2027; Fully Funded Scholarships in Germany; Study Abroad Scholarships 2026-27 | Fully Funded; LATEST FULLY FUNDED SCHOLARSHIPS. NEVER tick "CHALLY CNA REACTION PROMOTOR". Click Done; confirm "6 Facebook groups selected".
+4. Tick checkboxes (`[role=dialog] input[type=checkbox]` that are not role=switch) for: ScholarNexus- Scholarship & Academic Support Hub; Scholarship Positions and Study Abroad; USA Scholarships 2026-2027; Fully Funded Scholarships in Germany; Study Abroad Scholarships 2026-27 | Fully Funded; LATEST FULLY FUNDED SCHOLARSHIPS. NEVER tick "CHALLY CNA REACTION PROMOTOR". Click Done ONCE (scroll_to the Done ref, then click it; wait 2–3 s and screenshot before clicking again — a second click can land on the **Boost post** toggle). Confirm "6 Facebook groups selected" and that Boost post is OFF (`[role=dialog] input[role=switch]` unchecked). Close any "New notification" toast before clicking Next.
 5. Click the single visible "Post" button; click "Publish Original Post" if offered; wait for "Your post has been published".
 If a script times out or the composer looks duplicated, reload facebook.com and start that post again from step 1 (check the Page first so you never double-post).
 Service posters go to the Page only (no groups) unless Jack says otherwise.
