@@ -8,14 +8,14 @@ import PayButton from '../../../components/PayButton';
 export const dynamicParams = false;
 export function generateStaticParams() { return TEMPLATES.map((t) => ({ slug: t.slug })); }
 const find = (s) => TEMPLATES.find((t) => t.slug === s);
-export function generateMetadata({ params }) {
-  const t = find(params.slug);
+export async function generateMetadata({ params }) {
+  const t = find((await params).slug);
   if (!t) return {};
   return { title: `${t.title}: Sample Template`, description: t.blurb, alternates: { canonical: `/templates/${t.slug}` } };
 }
 
-export default function Page({ params }) {
-  const t = find(params.slug);
+export default async function Page({ params }) {
+  const t = find((await params).slug);
   if (!t) notFound();
   return (
     <div className="min-h-screen bg-white text-slate-900">
