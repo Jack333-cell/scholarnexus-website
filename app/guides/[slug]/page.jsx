@@ -8,14 +8,14 @@ import { GUIDES, fmtKES, fmtUSD, orderLink } from '../../../lib/pricing';
 export const dynamicParams = false;
 export function generateStaticParams() { return GUIDES.map((g) => ({ slug: g.slug })); }
 const find = (s) => GUIDES.find((g) => g.slug === s);
-export function generateMetadata({ params }) {
-  const g = find(params.slug);
+export async function generateMetadata({ params }) {
+  const g = find((await params).slug);
   if (!g) return {};
   return { title: `${g.title} (PDF Guide)`, description: g.blurb, alternates: { canonical: `/guides/${g.slug}` } };
 }
 
-export default function Page({ params }) {
-  const g = find(params.slug);
+export default async function Page({ params }) {
+  const g = find((await params).slug);
   if (!g) notFound();
   const fallback = g.paymentUrl || orderLink(`${g.title} PDF guide (${fmtKES(g.kes)} / ${fmtUSD(g.usd)})`);
   return (

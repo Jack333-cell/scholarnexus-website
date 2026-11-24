@@ -5,5 +5,5 @@ import { levels } from '../../../../lib/collections';
 export const revalidate = 3600;
 const find = (slug) => levels.find((l) => l.slug === slug);
 export function generateStaticParams() { return levels.map((l) => ({ level: l.slug })); }
-export function generateMetadata({ params }) { const c = find(params.level); return c ? collectionMetadata(c) : {}; }
-export default function Page({ params }) { const c = find(params.level); if (!c) notFound(); return <CollectionPage c={c} />; }
+export async function generateMetadata({ params }) { const c = find((await params).level); return c ? collectionMetadata(c) : {}; }
+export default async function Page({ params }) { const c = find((await params).level); if (!c) notFound(); return <CollectionPage c={c} />; }

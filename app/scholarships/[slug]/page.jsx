@@ -13,8 +13,8 @@ export function generateStaticParams() {
   return scholarships.map((s) => ({ slug: s.slug }));
 }
 
-export function generateMetadata({ params }) {
-  const s = getBySlug(params.slug);
+export async function generateMetadata({ params }) {
+  const s = getBySlug((await params).slug);
   if (!s) return {};
   const title = `${shortTitle(s)}: Eligibility, Benefits & Deadline`;
   const description = `${s.excerpt} Deadline: ${s.deadline}. Requirements, benefits and the official application link.`.slice(0, 300);
@@ -27,8 +27,8 @@ export function generateMetadata({ params }) {
   };
 }
 
-export default function Page({ params }) {
-  const s = getBySlug(params.slug);
+export default async function Page({ params }) {
+  const s = getBySlug((await params).slug);
   if (!s) notFound();
   const closed = isClosed(s);
   const country = countries.find((c) => c.match.includes(s.country) && c.slug !== 'europe');

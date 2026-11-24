@@ -9,7 +9,8 @@ export const dynamic = 'force-dynamic';
 export const metadata = { title: 'Payment status', robots: { index: false } };
 
 export default async function Page({ searchParams }) {
-  const ref = searchParams?.reference || searchParams?.trxref;
+  const sp = (await searchParams) || {};
+  const ref = sp.reference || sp.trxref;
   const tx = await verifyPayment(ref);
   const item = tx ? getItem(tx.metadata?.item_id) : null;
   const wa = (msg) => `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(msg)}`;

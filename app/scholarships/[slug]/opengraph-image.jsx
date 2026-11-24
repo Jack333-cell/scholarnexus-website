@@ -14,8 +14,8 @@ const clip = (t, n) => (t.length > n ? t.slice(0, n - 1).trimEnd() + '…' : t);
 // Keep only characters the default font can draw (drop emoji/flags).
 const plain = (t) => t.replace(/[\u{1F000}-\u{1FFFF}\u{2600}-\u{27BF}\u{FE0F}\u{200D}]/gu, '').replace(/≥/g, 'at least ').replace(/≈/g, '~').replace(/\s+/g, ' ').trim();
 
-export default function Image({ params }) {
-  const s = getBySlug(params.slug);
+export default async function Image({ params }) {
+  const s = getBySlug((await params).slug);
   const title = s ? clip(plain(shortTitle(s)), 80) : 'Verified scholarships';
   const amount = s ? clip(plain(s.amount), 70) : '';
   const deadline = s ? clip(plain(s.deadline), 34) : '';
