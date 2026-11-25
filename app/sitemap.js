@@ -1,6 +1,7 @@
 import { scholarships } from '../lib/data';
 import { SITE, allCollections } from '../lib/collections';
 import { TEMPLATES } from '../lib/pricing';
+import { ARTICLES } from '../lib/articles';
 
 export default function sitemap() {
   const now = new Date();
@@ -17,6 +18,8 @@ export default function sitemap() {
     { url: `${SITE}/tools/writing-checker`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
     { url: `${SITE}/pricing`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
     { url: `${SITE}/guides/ielts-courses`, lastModified: now, changeFrequency: 'monthly', priority: 0.7 },
+    { url: `${SITE}/articles`, lastModified: now, changeFrequency: 'weekly', priority: 0.8 },
+    ...ARTICLES.map((a) => ({ url: `${SITE}/articles/${a.slug}`, lastModified: new Date(a.updated || a.published), changeFrequency: 'monthly', priority: 0.7 })),
     { url: `${SITE}/courses`, lastModified: now, changeFrequency: 'weekly', priority: 0.7 },
     { url: `${SITE}/templates`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
     ...TEMPLATES.map((t) => ({ url: `${SITE}/templates/${t.slug}`, lastModified: now, changeFrequency: 'monthly', priority: 0.6 })),
