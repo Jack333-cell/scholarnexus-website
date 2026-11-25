@@ -55,7 +55,10 @@ Navigate (force) to `https://x.com/compose/post`, wait for `[data-testid=tweetTe
 4. Tick checkboxes (`[role=dialog] input[type=checkbox]` that are not role=switch) for: ScholarNexus- Scholarship & Academic Support Hub; Scholarship Positions and Study Abroad; USA Scholarships 2026-2027; Fully Funded Scholarships in Germany; Study Abroad Scholarships 2026-27 | Fully Funded; LATEST FULLY FUNDED SCHOLARSHIPS. NEVER tick "CHALLY CNA REACTION PROMOTOR". Click Done ONCE (scroll_to the Done ref, then click it; wait 2–3 s and screenshot before clicking again — a second click can land on the **Boost post** toggle). Confirm "6 Facebook groups selected" and that Boost post is OFF (`[role=dialog] input[role=switch]` unchecked). Close any "New notification" toast before clicking Next.
 5. Click the single visible "Post" button; click "Publish Original Post" if offered; wait for "Your post has been published".
 If a script times out or the composer looks duplicated, reload facebook.com and start that post again from step 1 (check the Page first so you never double-post).
-Service posters go to the Page only (no groups) unless Jack says otherwise.
+Service posters go to the Page AND the same 6 groups (Jack, 25 Nov 2026).
+If a post already went out Page-only, share it from the Page post instead of reposting: Share icon -> Group -> pick the group -> Post (toast "Shared to your group"), once per group; the post's share count should reach 6.
+X may show "Don't forget to make your image accessible" after clicking Post: click "Not this time".
+Service posters: don't set `money` (it renders a "FUNDING" box); put prices in the points.
 
 ## Google Search Console – request indexing
 `https://search.google.com/search-console?resource_id=sc-domain%3Ascholarnexushub.com` → combobox "Inspect any URL" → triple-click, type the full URL, Enter, wait ~8 s → click the visible "Request indexing" button → wait for "Indexing requested" (can take ~1 min) → click "Dismiss". About 10 per day; stop at "Quota exceeded".
