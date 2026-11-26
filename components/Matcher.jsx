@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import { parseQuery, matchScholarships, shortTitle, AFRICAN } from '../lib/match';
 
-const DESTS = ['Anywhere', 'Europe', 'United Kingdom', 'United States', 'Canada', 'Germany', 'Netherlands', 'Belgium', 'France', 'Sweden', 'Italy', 'China', 'Japan', 'Australia', 'Switzerland', 'Saudi Arabia'];
+const DESTS = ['Anywhere', 'Europe', 'United Kingdom', 'United States', 'Canada', 'Germany', 'Netherlands', 'Belgium', 'France', 'Sweden', 'Italy', 'China', 'Hong Kong', 'Japan', 'Australia', 'Switzerland', 'Saudi Arabia'];
 const NATS = ['Kenya', 'Nigeria', 'Ghana', 'Uganda', 'Tanzania', 'Ethiopia', 'Rwanda', 'South Africa', 'Zambia', 'Zimbabwe', 'Cameroon', 'Other African country', 'Outside Africa'];
 
 export default function Matcher() {
