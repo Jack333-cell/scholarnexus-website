@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation';
 import { SiteHeader, SiteFooter } from '../../../components/SiteShell';
 import ScholarshipCards, { DeadlineBadge } from '../../../components/ScholarshipCards';
 import { scholarships } from '../../../lib/data';
-import { prepFor } from '../../../lib/affiliates';
+import { prepFor, WISE_LINK } from '../../../lib/affiliates';
 import { SITE, getBySlug, shortTitle, isClosed, formatDate, sortByDeadline, countries, levels } from '../../../lib/collections';
 
 export const revalidate = 3600;
@@ -118,6 +118,14 @@ export default async function Page({ params }) {
             </section>
           )}
         </div>
+
+        {!closed && s.country !== 'Kenya' && (
+          <aside className="-mt-6 mb-10 flex flex-col sm:flex-row sm:items-center gap-3 rounded-xl border border-emerald-200 bg-emerald-50 px-5 py-4">
+            <p className="text-sm text-slate-700 flex-1"><strong className="text-slate-900">Paying fees or receiving a stipend abroad?</strong> Send application fees, deposits and rent in the local currency, and receive money at the mid-market exchange rate, with Wise.</p>
+            <a href={WISE_LINK} target="_blank" rel="sponsored noopener noreferrer" className="shrink-0 text-center px-4 py-2 bg-emerald-600 text-white text-sm font-semibold rounded-lg hover:bg-emerald-700">Open a free Wise account &rarr;</a>
+            <span className="text-[11px] text-slate-500 sm:hidden">Affiliate link</span>
+          </aside>
+        )}
 
         <section className="mb-8">
           <h2 className="text-2xl font-bold mb-3">Overview</h2>

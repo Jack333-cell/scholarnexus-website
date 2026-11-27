@@ -12,7 +12,7 @@ function Inline({ text }) {
       const href = m[2];
       out.push(href.startsWith('/')
         ? <Link key={k++} href={href} className="text-blue-600 underline hover:text-blue-800">{m[1]}</Link>
-        : <a key={k++} href={href} target="_blank" rel="noopener noreferrer" className="text-blue-600 underline hover:text-blue-800">{m[1]}</a>);
+        : <a key={k++} href={href} target="_blank" rel={/prf\.hn|sjv\.io|trk\.udemy/.test(href) ? "sponsored noopener noreferrer" : "noopener noreferrer"} className="text-blue-600 underline hover:text-blue-800">{m[1]}</a>);
     } else if (m[3]) out.push(<strong key={k++} className="text-slate-900">{m[3]}</strong>);
     else if (m[4]) out.push(<em key={k++}>{m[4]}</em>);
     last = re.lastIndex;

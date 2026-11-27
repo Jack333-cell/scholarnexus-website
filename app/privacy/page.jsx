@@ -39,7 +39,7 @@ export default function Page() {
         <p className="mt-3">You can opt out of personalised advertising by visiting <a href="https://adssettings.google.com" target="_blank" rel="noopener noreferrer" className="text-blue-600 underline">Google Ads Settings</a>, or opt out of some third-party vendors' use of cookies at <a href="https://www.aboutads.info/choices" target="_blank" rel="noopener noreferrer" className="text-blue-600 underline">www.aboutads.info</a>. Learn more in <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener noreferrer" className="text-blue-600 underline">how Google uses information from sites that use its services</a>.</p>
 
         <H>Affiliate links</H>
-        <p>Some pages, such as our courses page, contain affiliate links (for example to Udemy and Preply, through the Impact partner network). If you click one and buy, we may earn a commission at no extra cost to you. The partner may set cookies to track the referral.</p>
+        <p>Some pages, such as our courses page, contain affiliate links (for example to Udemy and Preply through the Impact partner network, and to Wise through Partnerize). If you click one and buy, we may earn a commission at no extra cost to you. The partner may set cookies to track the referral.</p>
 
         <H>Service providers</H>
         <ul className="list-disc pl-6 space-y-1">
