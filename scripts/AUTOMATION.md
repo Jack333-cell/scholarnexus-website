@@ -46,6 +46,7 @@ Do steps 1–3 in a fresh page load for every post (window.name is cleared after
 `setTimeout(()=>{location.href='https://www.facebook.com/#SNP'+u.split(',')[1]},100)` (u = the data URL), wait ~3 s, then on facebook.com read `location.hash.slice(4)`, call `history.replaceState(null,'',location.pathname)` and build the File from that base64. X still works with `window.name`.
 
 ## X posting
+**Scope everything to the compose dialog (27 Nov 2026).** x.com/compose/post also renders the home-feed composer behind the dialog, so a plain `document.querySelector('[data-testid=tweetTextarea_0]')` / `input[data-testid=fileInput]` can hit the background composer: posts went out as poster-only with no caption. Use `const D=document.querySelector('[role=dialog]')` and `D.querySelector(...)` for the textarea, fileInput, attachments and tweetButton; before clicking Post, re-check that D has both the full caption and `[data-testid=attachments]`. Afterwards check each post on the profile has text AND a photo.
 Navigate (force) to `https://x.com/compose/post`, wait for `[data-testid=tweetTextarea_0]` (empty), paste text via ClipboardEvent DataTransfer text/plain, verify `innerText.replace(/\n\n\n/g,'\n\n')===txt`, attach poster, click `[data-testid=tweetButton]`, wait for "Your post was sent". Keep text ≤ 280 chars (URLs count 23). Verify with `https://x.com/search?q=from%3ASaharanAfric%20<term>&f=live`.
 
 ## Facebook posting (as the ScholarNexus Page)
